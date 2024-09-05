@@ -7,4 +7,6 @@
     <string name="menu_bar">menu bar</string>
     <string name="notificarion">notificarion</string>
     <string name="user_s_status_device">User´s status device</string>
+    <string name="behevior_monitor_tracker">Behevior monitor tracker</string>
+    <string name="samid_bracelet_v2_1">SAMID bracelet v2.1</string>
 </resources>
