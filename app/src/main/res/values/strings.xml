@@ -4,4 +4,7 @@
     <string name="activities">Activities</string>
     <string name="consultarP">Consultar pacientes</string>
     <string name="weekly_analysis">Weekly Analysis</string>
+    <string name="menu_bar">menu bar</string>
+    <string name="notificarion">notificarion</string>
+    <string name="user_s_status_device">User´s status device</string>
 </resources>

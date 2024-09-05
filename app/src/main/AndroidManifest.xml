@@ -21,7 +21,7 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity3_landing"
+            android:name=".DeviceStatus"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
