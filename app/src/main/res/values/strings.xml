@@ -9,4 +9,7 @@
     <string name="user_s_status_device">User´s status device</string>
     <string name="behevior_monitor_tracker">Behevior monitor tracker</string>
     <string name="samid_bracelet_v2_1">SAMID bracelet v2.1</string>
+    <string name="braceletimage">braceletimage</string>
+    <string name="baterry_svg">baterry_svg</string>
+    <string name="have_you_experience_any_issues_with_this_device">Have you experience any issues with this device?</string>
 </resources>
