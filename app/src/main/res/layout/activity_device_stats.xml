@@ -96,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="@id/card"
         app:layout_constraintEnd_toEndOf="@id/card"
         app:layout_constraintStart_toStartOf="@id/card"
-        android:src="@drawable/Pulsera_03"
+        android:src="@drawable/pulsera"
         android:elevation="100dp"
         android:id="@+id/bracelet_image"/>
 
