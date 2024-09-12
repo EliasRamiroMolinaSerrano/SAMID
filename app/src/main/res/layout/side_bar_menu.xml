@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@color/BlueLight"
+    app:layout_constraintEnd_toEndOf="parent">
 
+    <!-- CardView for the main dialog background -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="350dp"
+        android:layout_height="450dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:elevation="11dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <!-- Main Content of CardView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:orientation="horizontal"
+            android:background="@color/VioletDarker"
+            android:gravity="top">
 
-</androidx.drawerlayout.widget.DrawerLayout>
+            <!-- ShapeableImageView for circular image -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/vegetta"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/pulsera_image"
+                app:shapeAppearanceOverlay="@style/CircularImage"/>
+
+            <!-- Inner LinearLayout to stack TextViews horizontally -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <!-- TextView for Username -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textSize="18sp"
+                    android:textColor="@color/VioletLightActive"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- TextView for Caretaker Role -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caretaker"
+                    android:textSize="16sp"
+                    android:textColor="@color/VioletLightActive"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

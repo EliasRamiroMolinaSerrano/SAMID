@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60sp"
-        android:text="@string/home"
+        android:text="@string/Home"
         android:textColor="@color/azulfuerte"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/Patients"
@@ -103,23 +103,6 @@
                     app:tint="@color/grisb">
 
                 </ImageView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <ImageView
@@ -228,6 +211,7 @@
 
 
     </androidx.cardview.widget.CardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
