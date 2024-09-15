@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view"
+    tools:ignore="ExtraText">
+
+    <group
+        android:checkableBehavior="single"/>
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_ic"
+            android:title="@string/Home" />"
+
+        <item
+            android:id="@+id/weekly_analisys"
+            android:icon="@drawable/calendar_ic"
+            android:title="@string/weekly_analisys" />"
+
+        <item
+            android:id="@+id/Check_now"
+            android:icon="@drawable/pulse_ic"
+            android:title="@string/check_now" />"
+
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/history_ic"
+            android:title="@string/history" />"
+
+        <item
+            android:id="@+id/device_status"
+            android:icon="@drawable/devices_ic"
+            android:title="@string/device_status" />"
+
+        <item
+            android:id="@+id/configuration"
+            android:icon="@drawable/configuration_ic"
+            android:title="@string/configuration" />"
+
+
+</menu>

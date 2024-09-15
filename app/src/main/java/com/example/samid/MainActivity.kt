@@ -1,5 +1,5 @@
 package com.example.samid
-
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +16,8 @@ class MainActivity : ComponentActivity() {
     lateinit var passwordInput: EditText
     lateinit var loginBtn: Button
 
+
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
