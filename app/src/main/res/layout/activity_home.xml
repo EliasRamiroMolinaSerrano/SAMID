@@ -1,217 +1,179 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="30dp"
-    android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <ImageView
-        android:id="@+id/rayas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/baseline_menu_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription">
+    <!-- Contenido principal (tu diseño actual) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="30dp"
+        tools:context=".HomeActivity">
 
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/notifiacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/notification_icon"
-        app:layout_constraintBottom_toBottomOf="@id/rayas"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:tint="@color/black"
-        tools:ignore="ContentDescription">
-
-    </ImageView>
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60sp"
-        android:text="@string/Home"
-        android:textColor="@color/azulfuerte"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/Patients"
-        tools:ignore="MissingConstraints">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/hello_samuel"
-
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/Patients"
-        tools:ignore="MissingConstraints">
-
-    </TextView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/Patients"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="170dp"
-        android:background="@drawable/shadow"
-        app:cardElevation="7dp"
-
-        app:cardBackgroundColor="@color/morao"
-        app:cardCornerRadius="16dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        android:fontFamily="@font/montserratm"
-
-        tools:ignore="DuplicateIds">
-
-
-        <Button
-            android:id="@+id/pacientBtn"
-            android:layout_width="200dp"
-            android:backgroundTint="@color/white"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginStart="135dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/consultarP">
-
-        </Button>
-
-                <ImageView
-
-                 android:layout_height="wrap_content"
-                    android:layout_width="15dp"
-                    android:src="@drawable/arrow"
-                    tools:ignore="ContentDescription"
-                    android:layout_marginStart="307dp"
-                    android:layout_marginTop="63dp"
-                    app:tint="@color/grisb">
-
-                </ImageView>
-
-
+        <!-- Icono del menú (hamburguesa) -->
         <ImageView
-
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/usuarios"
-            android:layout_gravity="center"
-            android:layout_marginEnd="100dp"
-            app:tint="@color/iconuser"
-            tools:ignore="ContentDescription">
-
-
-        </ImageView>
-
-
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/analisis"
-        android:layout_width="160dp"
-        android:layout_height="150dp"
-        app:cardBackgroundColor="@color/celestee"
-        app:cardCornerRadius="16dp"
-        android:background="@drawable/shadow"
-        app:cardElevation="7dp"
-        app:layout_constraintBottom_toBottomOf="@id/devices"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="DuplicateIds">
-
-        <TextView
+            android:id="@+id/rayas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/weekly_analysis"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/baseline_menu_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
-            android:textSize="20sp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp"
-            >
-
-
-        </TextView>
-
+        <!-- Icono de notificación -->
         <ImageView
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/imagen"
-            android:src="@drawable/chart2"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="60dp"
-
-            >
-
-        </ImageView>
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="@string/activities"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/analisis"
-        tools:ignore="MissingConstraints">
-
-    </TextView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/devices"
-
-        android:layout_width="160dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="70dp"
-        app:cardBackgroundColor="@color/verde"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/shadow"
-        app:cardElevation="7dp"
-        app:layout_constraintTop_toBottomOf="@id/Patients"
-        tools:ignore="DuplicateIds">
-
-        <TextView
+            android:id="@+id/notificacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/devices"
-            android:textSize="20sp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp">
+            android:src="@drawable/notification_icon"
+            app:layout_constraintBottom_toBottomOf="@id/rayas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription" />
 
-        </TextView>
-
-        <ImageView
-            android:layout_width="70dp"
+        <!-- Texto de bienvenida -->
+        <TextView
+            android:id="@+id/hello"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/graph_ic"
-            android:src="@drawable/pulsera"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/hello_samuel"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/Patients"
+            tools:ignore="MissingConstraints" />
 
-            >
+        <!-- Tarjeta de pacientes -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Patients"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="170dp"
+            android:background="@drawable/shadow"
+            app:cardElevation="7dp"
+            app:cardBackgroundColor="@color/morao"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/montserratm">
 
-        </ImageView>
+            <!-- Botón dentro de la tarjeta de pacientes -->
+            <Button
+                android:id="@+id/pacientBtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="@string/consultarP"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:layout_marginStart="135dp"
+                android:layout_marginTop="50dp" />
 
+            <!-- Icono de flecha dentro de la tarjeta -->
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow"
+                android:layout_marginStart="307dp"
+                android:layout_marginTop="63dp"
+                app:tint="@color/grisb"
+                tools:ignore="ContentDescription" />
 
-    </androidx.cardview.widget.CardView>
+            <!-- Icono de usuario dentro de la tarjeta -->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/usuarios"
+                android:layout_gravity="center"
+                android:layout_marginEnd="100dp"
+                app:tint="@color/iconuser"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
 
+        <!-- Tarjeta de análisis semanal -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/analisis"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            app:cardBackgroundColor="@color/celestee"
+            app:cardCornerRadius="16dp"
+            android:background="@drawable/shadow"
+            app:cardElevation="7dp"
+            app:layout_constraintBottom_toBottomOf="@id/devices"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weekly_analysis"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chart2"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="60dp"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Texto de actividades -->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="@string/activities"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/analisis"
+            tools:ignore="MissingConstraints" />
+
+        <!-- Tarjeta de dispositivos -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/devices"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="70dp"
+            app:cardBackgroundColor="@color/verde"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/shadow"
+            app:cardElevation="7dp"
+            app:layout_constraintTop_toBottomOf="@id/Patients">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/devices"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp" />
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pulsera"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="40dp"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- NavigationView que contiene el menú lateral -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

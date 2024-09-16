@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn = "navigation_view"
-    tools:ignore="ExtraText">
+    tools:showIn="navigation_view">
 
     <group
-        android:checkableBehavior="single"/>
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_ic"
-            android:title="@string/Home" />"
+            android:title="@string/Home" />
 
         <item
-            android:id="@+id/weekly_analisys"
-            android:icon="@drawable/calendar_ic"
-            android:title="@string/weekly_analisys" />"
+            android:id="@+id/weekly_analysis"
+            android:icon="@drawable/calendar_month_ic"
+            android:title="@string/weekly_analisys" />
 
         <item
-            android:id="@+id/Check_now"
+            android:id="@+id/check_now"
             android:icon="@drawable/pulse_ic"
-            android:title="@string/check_now" />"
+            android:title="@string/check_now" />
 
         <item
             android:id="@+id/history"
             android:icon="@drawable/history_ic"
-            android:title="@string/history" />"
+            android:title="@string/history" />
 
         <item
             android:id="@+id/device_status"
             android:icon="@drawable/devices_ic"
-            android:title="@string/device_status" />"
+            android:title="@string/device_status" />
 
         <item
             android:id="@+id/configuration"
             android:icon="@drawable/configuration_ic"
-            android:title="@string/configuration" />"
+            android:title="@string/configuration" />
+    </group>
 
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/log_out_ic"
+                android:title="@string/logout" />
+        </menu>
+    </item>
 
 </menu>

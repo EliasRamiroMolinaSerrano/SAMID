@@ -26,7 +26,15 @@
     <string name="history">History</string>
     <string name="device_status">Device Status</string>
     <string name="configuration">Configuration</string>
-    <string name="pulsera_image">Pulsera Image</string>
+    <string name="pulsera_image">pulsera Image</string>
     <string name="username">Username</string>
     <string name="caretaker">Caretaker</string>
+    <string name="logout">logout</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="user_name">user name</string>
+    <string name="contact_info">contact info</string>
+    <string name="home_fragment">Home fragment</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
 </resources>
