@@ -1,29 +1,31 @@
 package com.example.samid
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class DeviceStatus : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navView: NavigationView
+    protected lateinit var drawerLayout: DrawerLayout
+    protected lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_device_stats)
+        setContentView(R.layout.activity_home)
 
-        // Inicializar DrawerLayout y NavigationView
-        drawerLayout = findViewById(R.id.drawer_layout_device_status)
-        navView = findViewById(R.id.nav_view_device_status)
+        // Setup del menú lateral
+        setupDrawerMenu()
+    }
 
-        // Configuración del toggle para abrir/cerrar el menú lateral con el botón de "hamburguesa"
+    private fun setupDrawerMenu() {
+        // Enlazar DrawerLayout y NavigationView
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+
+        // Configuración del toggle para abrir/cerrar el menú lateral
         val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -32,7 +34,7 @@ class DeviceStatus : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    // Acción para "Home"
                     true
                 }
                 R.id.weekly_analysis -> {
@@ -48,7 +50,7 @@ class DeviceStatus : AppCompatActivity() {
                     true
                 }
                 R.id.device_status -> {
-                    // Acción para "Device Status" (actualmente en DeviceStatus)
+                    // Acción para "Device Status"
                     true
                 }
                 R.id.configuration -> {
@@ -62,21 +64,19 @@ class DeviceStatus : AppCompatActivity() {
                 else -> false
             }
         }
-
-        // Handle system bars padding
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawer_layout_device_status)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     override fun onBackPressed() {
-        // Cierra el menú lateral si está abierto, en lugar de salir de la actividad directamente
+        // Cierra el menú lateral si está abierto
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
+    }
+
+    // Método opcional para abrir el menú desde otras actividades
+    protected fun openMenu() {
+        drawerLayout.openDrawer(GravityCompat.START)
     }
 }

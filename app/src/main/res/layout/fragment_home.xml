@@ -12,6 +12,6 @@
         android:text="@string/home_fragment"
         android:textSize="32sp"
         android:layout_centerInParent="true"
-        android:textColor="@color/VioletDarker"/>
+        android:textColor="@color/Primary_Dark"/>
 
 </RelativeLayout>

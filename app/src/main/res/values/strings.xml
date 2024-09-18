@@ -37,4 +37,13 @@
     <string name="home_fragment">Home fragment</string>
     <string name="navigation_drawer_open" />
     <string name="navigation_drawer_close" />
+    <string name="batteryicon">batteryIcon</string>
+    <string name="card_description">card_description</string>
+    <string name="status">Status</string>
+    <string name="patient_name">Patient_Name</string>
+    <string name="patient_id">Patient_ID</string>
+    <string name="patients">Patients</string>
+    <string name="add_icon">Add_Icon</string>
+    <string name="userimage">userimage</string>
+    <string name="contact_information">Contact_Info</string>
 </resources>

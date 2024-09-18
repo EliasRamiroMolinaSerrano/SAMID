@@ -1,5 +1,6 @@
 package com.example.samid
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -57,7 +58,9 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.device_status -> {
-                    // Acción para "Device Status"
+                    // Navegar a la actividad DeviceStatus
+                    val intent = Intent(this, DeviceStatus::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.configuration -> {
