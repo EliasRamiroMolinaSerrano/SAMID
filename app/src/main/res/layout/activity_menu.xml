@@ -8,7 +8,6 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     tools:context=".MenuActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/fragment_container" />
-
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -36,8 +34,7 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
-        app:itemIconTint="@color/VioletLightActive"
-        app:itemTextColor="@color/VioletLightActive"
+        app:itemIconTint="@color/Primary_Dark"
+            app:itemTextColor="@color/Primary_Dark"
         app:menu="@menu/nav_menu"/>
-
 </androidx.drawerlayout.widget.DrawerLayout>

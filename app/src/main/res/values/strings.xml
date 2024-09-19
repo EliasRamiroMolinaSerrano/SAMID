@@ -45,5 +45,21 @@
     <string name="patients">Patients</string>
     <string name="add_icon">Add_Icon</string>
     <string name="userimage">userimage</string>
-    <string name="contact_information">Contact_Info</string>
+    <string name="contact_information">Contact Info</string>
+    <string name="Layout_Header">Layout_Header</string>
+    <string name="icon">Icon</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up_with">Sign Up with</string>
+    <string name="facebook_logo">Facebook logo</string>
+    <string name="google_logo">Google logo</string>
+    <string name="email_logo">Email logo</string>
+    <string name="logo">Logo</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="register">Register</string>
+    <string name="i_have_already_an_account">I have already an account</string>
+    Layout_Header
 </resources>

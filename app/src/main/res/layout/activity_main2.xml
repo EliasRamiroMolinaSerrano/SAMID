@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -19,14 +18,15 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="250dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/logoapp" />
 
         <!-- Name Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:hint="Name"
-            android:textColor="#9D9D9D"
+            android:hint="@string/name"
+            android:importantForAutofill="no" android:textColor="#9D9D9D"
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
@@ -41,7 +41,8 @@
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:hint="Last name"
+            android:hint="@string/last_name"
+            android:importantForAutofill="no"
             android:textColor="#9D9D9D"
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
@@ -57,7 +58,8 @@
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:hint="Email"
+            android:hint="@string/email"
+            android:importantForAutofill="no"
             android:textColor="#9D9D9D"
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
@@ -65,15 +67,16 @@
             android:fontFamily="@font/montserratm"
             android:background="@drawable/shadow"
             android:elevation="12dp"
-            android:inputType="text"
             android:id="@+id/email_register_input"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            tools:ignore="TextFields" />
 
         <!-- Password Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
-            android:hint="Password"
+            android:hint="@string/password"
+            android:importantForAutofill="no"
             android:textColor="#9D9D9D"
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
@@ -89,7 +92,7 @@
         <Button
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="Register"
+            android:text="@string/register"
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
@@ -101,12 +104,12 @@
         <TextView
             android:layout_width="210dp"
             android:layout_height="20dp"
-            android:text="I have already an account"
+            android:text="@string/i_have_already_an_account"
             android:textColor="@color/black"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="132dp"
             android:fontFamily="@font/montserratm"
-            android:textSize="16dp"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

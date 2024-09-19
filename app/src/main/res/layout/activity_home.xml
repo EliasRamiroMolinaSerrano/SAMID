@@ -4,6 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".HomeActivity">
 
     <!-- Contenido principal (tu diseño actual) -->
@@ -79,7 +80,7 @@
                 android:src="@drawable/arrow"
                 android:layout_marginStart="307dp"
                 android:layout_marginTop="63dp"
-                app:tint="@color/grisb"
+                app:tint="@color/Primary_Dark"
                 tools:ignore="ContentDescription" />
 
             <!-- Icono de usuario dentro de la tarjeta -->

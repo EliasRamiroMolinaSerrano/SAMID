@@ -15,11 +15,12 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true">
-
         </activity>
-
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PatientsView"
             android:exported="true" />
         <activity
             android:name=".DeviceStatus"

@@ -59,7 +59,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.device_status -> {
                     // Navegar a la actividad DeviceStatus
-                    val intent = Intent(this, DeviceStatus::class.java)
+                    val intent = Intent(this, PatientsView::class.java)
                     startActivity(intent)
                     true
                 }

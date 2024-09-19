@@ -1,82 +1,57 @@
 package com.example.samid
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-open class BaseActivity : AppCompatActivity() {
-
-    protected lateinit var drawerLayout: DrawerLayout
-    protected lateinit var navView: NavigationView
+open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
 
-        // Setup del menú lateral
-        setupDrawerMenu()
+        // El diseño será configurado en las subclases
     }
 
-    private fun setupDrawerMenu() {
-        // Enlazar DrawerLayout y NavigationView
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
+    // Setup toolbar, DrawerLayout, and NavigationView
+    protected fun setupMenu(drawerLayout: DrawerLayout, toolbar: Toolbar, navView: NavigationView) {
+        this.drawerLayout = drawerLayout
+        setSupportActionBar(toolbar)
 
-        // Configuración del toggle para abrir/cerrar el menú lateral
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.open_nav, R.string.close_nav
+        )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // Manejo de los clics en los elementos del menú lateral
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    // Acción para "Home"
-                    true
-                }
-                R.id.weekly_analysis -> {
-                    // Acción para "Weekly Analysis"
-                    true
-                }
-                R.id.check_now -> {
-                    // Acción para "Check Now"
-                    true
-                }
-                R.id.history -> {
-                    // Acción para "History"
-                    true
-                }
-                R.id.device_status -> {
-                    // Acción para "Device Status"
-                    true
-                }
-                R.id.configuration -> {
-                    // Acción para "Configuration"
-                    true
-                }
-                R.id.nav_logout -> {
-                    // Acción para "Logout"
-                    true
-                }
-                else -> false
-            }
+        navView.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_home -> supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, HomeFragment()).commit()
+            R.id.weekly_analysis -> {}
+            R.id.check_now -> {}
+            R.id.history -> {}
+            R.id.device_status -> {}
+            R.id.configuration -> {}
         }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
     }
 
     override fun onBackPressed() {
-        // Cierra el menú lateral si está abierto
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
-    }
-
-    // Método opcional para abrir el menú desde otras actividades
-    protected fun openMenu() {
-        drawerLayout.openDrawer(GravityCompat.START)
     }
 }

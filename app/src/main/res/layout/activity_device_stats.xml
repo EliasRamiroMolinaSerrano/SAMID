@@ -11,26 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Tu diseño actual para DeviceStatus -->
-        <ImageView
-            android:contentDescription="@string/menu_bar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="24dp"
-            android:src="@drawable/baseline_menu_24"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_width="24dp"/>
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/notificarion"
-            android:src="@drawable/notification_icon"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header" />
 
         <TextView
             android:layout_width="wrap_content"
