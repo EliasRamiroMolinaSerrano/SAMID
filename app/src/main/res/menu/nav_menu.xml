@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group
         android:checkableBehavior="single">
-
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_ic"
             android:title="@string/Home" />
+
+        <item
+            android:id="@+id/patients_view"
+            android:icon="@drawable/patients_ic"
+            android:title="@string/patients" />
 
         <item
             android:id="@+id/weekly_analysis"
@@ -36,7 +39,6 @@
             android:icon="@drawable/configuration_ic"
             android:title="@string/configuration" />
     </group>
-
     <item android:title="">
         <menu>
             <item
@@ -45,5 +47,4 @@
                 android:title="@string/logout" />
         </menu>
     </item>
-
 </menu>

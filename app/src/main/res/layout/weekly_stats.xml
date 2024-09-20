@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".WeeklyStats">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header" />
+
+        <TextView
+            android:id="@+id/user_weekly_stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_s_weekly_stats"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/montserratregular"
+            android:textColorHint="#2E268E"
+            android:textSize="30sp"
+            android:layout_marginTop="150dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="20dp"
+            app:layout_constraintTop_toTopOf="@id/user_weekly_stats"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/first_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/primary_vertical_line"
+            android:elevation="13dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="@id/card"
+            app:layout_constraintStart_toStartOf="@id/card"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/secondary_vertical_line"
+            android:elevation="13dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/card"
+            app:layout_constraintStart_toStartOf="@id/first_line"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/Primary_Dark"
+        app:itemTextColor="@color/Primary_Dark"
+        app:menu="@menu/nav_menu"
+        android:layout_marginTop="20dp" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

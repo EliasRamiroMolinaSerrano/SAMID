@@ -61,5 +61,6 @@
     <string name="last_name">Last name</string>
     <string name="register">Register</string>
     <string name="i_have_already_an_account">I have already an account</string>
+    <string name="user_s_weekly_stats">User´s weekly stats</string>
     Layout_Header
 </resources>

@@ -2,13 +2,12 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.widget.ImageView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 
 class DeviceStatus : AppCompatActivity() {
 
@@ -20,8 +19,14 @@ class DeviceStatus : AppCompatActivity() {
         setContentView(R.layout.activity_device_stats)
 
         // Inicializar DrawerLayout y NavigationView
-        drawerLayout = findViewById(R.id.drawer_layout_device_status)
-        navView = findViewById(R.id.nav_view_device_status)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+
+        // Icono del menú (rayas/hamburguesa)
+        val rayasIcon = findViewById<ImageView>(R.id.rayas)
+        rayasIcon.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)  // Abre el menú lateral al hacer clic
+        }
 
         // Configuración del toggle para abrir/cerrar el menú lateral con el botón de "hamburguesa"
         val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -32,10 +37,20 @@ class DeviceStatus : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
+                    // Navegar a HomeActivity
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.patients_view -> {
+                    val intent = Intent(this, PatientsView::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.weekly_analysis -> {
+                    val intent = Intent(this, WeeklyStats::class.java)
+                    startActivity(intent)
+
                     // Acción para "Weekly Analysis"
                     true
                 }
@@ -48,7 +63,9 @@ class DeviceStatus : AppCompatActivity() {
                     true
                 }
                 R.id.device_status -> {
-                    // Acción para "Device Status" (actualmente en DeviceStatus)
+                    // Navegar a otra actividad
+                    val intent = Intent(this, DeviceStatus::class.java)  // Cambia AnotherActivity según sea necesario
+                    startActivity(intent)
                     true
                 }
                 R.id.configuration -> {
@@ -62,16 +79,8 @@ class DeviceStatus : AppCompatActivity() {
                 else -> false
             }
         }
-
-        // Handle system bars padding
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawer_layout_device_status)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
-    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         // Cierra el menú lateral si está abierto, en lugar de salir de la actividad directamente
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

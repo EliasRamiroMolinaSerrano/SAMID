@@ -42,10 +42,16 @@ class HomeActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Acción para el ítem "Home"
+                    true
+                }
+                R.id.patients_view -> {
+                    val intent = Intent(this, PatientsView::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.weekly_analysis -> {
+                    val intent = Intent(this, WeeklyStats::class.java)
+                    startActivity(intent)
                     // Acción para "Weekly Analysis"
                     true
                 }
@@ -59,7 +65,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.device_status -> {
                     // Navegar a la actividad DeviceStatus
-                    val intent = Intent(this, PatientsView::class.java)
+                    val intent = Intent(this, DeviceStatus::class.java)
                     startActivity(intent)
                     true
                 }
