@@ -30,7 +30,7 @@
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
-            android:fontFamily="@font/montserratm"
+            android:fontFamily="@font/montserrat"
             android:inputType="text"
             android:background="@drawable/shadow"
             android:elevation="12dp"
@@ -47,7 +47,7 @@
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
-            android:fontFamily="@font/montserratm"
+            android:fontFamily="@font/montserrat"
             android:background="@drawable/shadow"
             android:elevation="12dp"
             android:inputType="text"
@@ -64,7 +64,7 @@
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
-            android:fontFamily="@font/montserratm"
+            android:fontFamily="@font/montserrat"
             android:background="@drawable/shadow"
             android:elevation="12dp"
             android:id="@+id/email_register_input"
@@ -81,7 +81,7 @@
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
-            android:fontFamily="@font/montserratm"
+            android:fontFamily="@font/montserrat"
             android:background="@drawable/shadow"
             android:elevation="12dp"
             android:inputType="textPassword"
@@ -96,8 +96,8 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
-            android:background="@drawable/ronded_botton"
-            android:fontFamily="@font/montserratm"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/montserrat"
             android:id="@+id/register_btn"/>
 
         <!-- Already Have Account Text -->
@@ -108,7 +108,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="132dp"
-            android:fontFamily="@font/montserratm"
+            android:fontFamily="@font/montserrat"
             android:textSize="16sp"/>
 
     </LinearLayout>

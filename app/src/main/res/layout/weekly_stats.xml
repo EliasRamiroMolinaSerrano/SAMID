@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/user_s_weekly_stats"
             android:layout_marginBottom="20dp"
-            android:fontFamily="@font/montserratregular"
+            android:fontFamily="@font/montserrat_regular"
             android:textColorHint="#2E268E"
             android:textSize="30sp"
             android:layout_marginTop="150dp"

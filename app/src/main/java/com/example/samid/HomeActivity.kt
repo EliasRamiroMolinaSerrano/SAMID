@@ -52,11 +52,11 @@ class HomeActivity : AppCompatActivity() {
                 R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
-                    // Acción para "Weekly Analysis"
                     true
                 }
                 R.id.check_now -> {
-                    // Acción para "Check Now"
+                    val intent = Intent(this, CheckNow::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.history -> {

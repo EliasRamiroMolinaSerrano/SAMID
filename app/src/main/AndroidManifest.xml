@@ -29,6 +29,9 @@
             android:name=".WeeklyStats"
             android:exported="false" />
         <activity
+            android:name=".CheckNow"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity

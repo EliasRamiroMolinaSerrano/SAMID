@@ -42,7 +42,7 @@
             app:cardCornerRadius="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/montserratm">
+            android:fontFamily="@font/montserrat">
 
             <!-- Botón dentro de la tarjeta de pacientes -->
             <Button
