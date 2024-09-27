@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:gravity="top"
     android:padding="16dp"
-    android:background="@color/morao"
+    android:background="@color/Primary_Normal"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:layout_height="176dp">
 
@@ -13,6 +13,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:contentDescription="@string/userimage"
+        android:layout_marginTop="30dp"
         android:src="@drawable/icon_account_circle"/>
 
 
@@ -23,6 +24,7 @@
         android:text="@string/username"
         android:textColor="@color/Primary_Dark"
         android:fontFamily="@font/montserrat_bold"
+        android:layout_marginTop="35dp"
         android:layout_marginStart="20sp"
         android:textSize="20sp"/>
 
@@ -35,6 +37,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="20sp"
+        android:layout_marginTop="35dp"
         android:textSize="20sp"/>
 
 </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:padding="16dp"
-    android:background="@drawable/login_background"
+    android:background="@color/white"
     tools:context=".MainActivity2">
 
     <LinearLayout
@@ -26,7 +26,8 @@
             android:layout_width="350dp"
             android:layout_height="48dp"
             android:hint="@string/name"
-            android:importantForAutofill="no" android:textColor="#9D9D9D"
+            android:importantForAutofill="no"
+            android:textColor="#9D9D9D"
             android:textColorHint="#9D9D9D"
             android:textSize="20sp"
             android:padding="6dp"
@@ -96,8 +97,8 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:textSize="20sp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/montserrat"
+            android:background="@color/Primary_Normal"
+            android:fontFamily="@font/montserrat_bold"
             android:id="@+id/register_btn"/>
 
         <!-- Already Have Account Text -->

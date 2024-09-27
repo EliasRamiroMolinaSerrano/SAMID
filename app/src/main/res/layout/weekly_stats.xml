@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/white"
     tools:context=".WeeklyStats">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +33,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
+            android:background="@drawable/rounded_corners"
             android:layout_width="350dp"
             android:layout_height="300dp"
             app:cardCornerRadius="15dp"
@@ -74,6 +76,7 @@
         app:itemIconTint="@color/Primary_Dark"
         app:itemTextColor="@color/Primary_Dark"
         app:menu="@menu/nav_menu"
+        android:background="@color/white"
         android:layout_marginTop="20dp" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
