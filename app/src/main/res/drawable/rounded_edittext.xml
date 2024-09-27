@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/GrayViolet" />
+    <corners android:radius="16dp" /> <!-- Ajusta el radio según lo que necesites -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/GrayViolet" /> <!-- Opcional: si quieres un borde alrededor -->
+</shape>
