@@ -19,9 +19,8 @@
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:contentDescription="@string/logo"
-            android:src="@drawable/logoapp" />
+            android:src="@drawable/logo_app" />
 
-        <!-- Name Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
@@ -38,7 +37,6 @@
             android:id="@+id/name_input"
             android:layout_marginTop="8dp"/>
 
-        <!-- Last Name Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
@@ -55,7 +53,6 @@
             android:id="@+id/last_name_input"
             android:layout_marginTop="16dp"/>
 
-        <!-- Email Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
@@ -72,7 +69,6 @@
             android:layout_marginTop="16dp"
             tools:ignore="TextFields" />
 
-        <!-- Password Field -->
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
@@ -89,19 +85,17 @@
             android:id="@+id/password_input"
             android:layout_marginTop="16dp"/>
 
-        <!-- Register Button -->
         <Button
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:text="@string/register"
-            android:textColor="@color/white"
+            android:textColor="@color/Secondary_Light"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            android:background="@color/Primary_Normal"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/montserrat_bold"
             android:id="@+id/register_btn"/>
 
-        <!-- Already Have Account Text -->
         <TextView
             android:layout_width="210dp"
             android:layout_height="20dp"

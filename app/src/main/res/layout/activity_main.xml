@@ -19,14 +19,14 @@
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:contentDescription="@string/icon"
-            android:src="@drawable/logoapp" />
+            android:src="@drawable/logo_app" />
 
         <EditText
             android:layout_width="350dp"
             android:layout_height="48dp"
             android:hint="@string/email"
             android:importantForAutofill="no"
-            android:textColor="#9D9D9D"
+            android:textColorHint="@color/Gray"
             android:textSize="20sp"
             android:padding="6dp"
             android:elevation="5dp"
@@ -40,13 +40,13 @@
             android:layout_height="48dp"
             android:hint="@string/password"
             android:importantForAutofill="no"
-            android:textColor="#9D9D9D"
+            android:textColor="@color/Gray"
             android:layout_marginTop="16dp"
-            android:textColorHint="#9D9D9D"
+            android:textColorHint="@color/Gray"
             android:textSize="20sp"
             android:padding="6dp"
             android:fontFamily="@font/montserrat"
-            android:background="@color/Primary_Light"
+            android:background="@drawable/input_rectangles"
             android:elevation="5dp"
             android:inputType="textPassword"
             android:id="@+id/password_input" />
@@ -55,7 +55,7 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:text="@string/login"
-            android:textColor="@color/white"
+            android:textColor="@color/Secondary_Light"
             android:layout_marginTop="20dp"
             android:textSize="18sp"
             android:background="@drawable/rounded_button"
@@ -71,28 +71,39 @@
             android:fontFamily="@font/montserrat"
             android:textSize="16sp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Aquí está el RelativeLayout con las líneas a los lados y el texto centrado -->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up_with"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:layout_marginTop="24dp">
 
-        <TextView
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/line"
-            android:layout_marginTop="-13dp"
-            android:layout_marginStart="110dp" />
+            <TextView
+                android:contentDescription="left line"
+                android:layout_width="128dp"
+                android:layout_height="2dp"
+                android:background="@drawable/line"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp" />
 
-        <TextView
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/line"
-            android:layout_marginTop="-20dp"
-            android:layout_marginEnd="108dp" />
+            <TextView
+                android:contentDescription="right line"
+                android:layout_width="128dp"
+                android:layout_height="2dp"
+                android:background="@drawable/line"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_up_with"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -102,8 +113,8 @@
             android:layout_marginTop="16dp">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:contentDescription="@string/facebook_logo"
                 android:src="@drawable/facebook_logo"
                 android:id="@+id/facebook_btn"
@@ -112,18 +123,18 @@
                 />
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_margin="16dp"
                 android:contentDescription="@string/google_logo"
                 android:src="@drawable/google_logo"
                 android:padding="4dp"
                 android:id="@+id/google_btn"/>
-
         </LinearLayout>
+
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="32dp"
             android:contentDescription="@string/email_logo"
             android:src="@drawable/email_logo"
