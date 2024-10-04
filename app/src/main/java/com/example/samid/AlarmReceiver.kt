@@ -1,5 +1,6 @@
 package com.example.samid
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -9,6 +10,7 @@ import androidx.core.app.NotificationManagerCompat
 import android.util.Log
 
 class AlarmReceiver : BroadcastReceiver() {
+    @SuppressLint("MissingPermission")
     override fun onReceive(context: Context?, intent: Intent?) {
         // Asegúrate de que el contexto no sea nulo
         context?.let { ctx ->
