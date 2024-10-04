@@ -84,8 +84,9 @@ class HomeActivity : AppCompatActivity() {
         // Button to trigger the custom dialog
         val pacientBtn = findViewById<Button>(R.id.pacientBtn)
 
-        // Set an onClickListener to show the custom dialog when pacientBtn is clicked
+            // Set an onClickListener to show the custom dialog when pacientBtn is clicked
         pacientBtn.setOnClickListener {
+            /*
             // Inflate the custom dialog layout
             val customDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
 
@@ -105,7 +106,17 @@ class HomeActivity : AppCompatActivity() {
             okBtn.setOnClickListener {
                 dialogBuilder.dismiss() // Close the dialog when OK is clicked
             }
+            */
         }
+
+        pacientBtn.setOnClickListener {
+            // Iniciar la nueva actividad
+            val intent = Intent(this, PatientsView::class.java)
+            startActivity(intent)
+        }
+
+
+
 
         // Handle system bars padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activity_home)) { v, insets ->

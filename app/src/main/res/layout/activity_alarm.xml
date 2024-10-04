@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AlarmActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tituloAlarma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configurar alarma"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat" />
+
+    <TextView
+        android:id="@+id/selectedTime"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/tituloAlarma"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:text="8:45 PM"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/selectTimeBtn"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/tituloAlarma"
+        app:layout_constraintStart_toStartOf="@id/tituloAlarma"
+        app:layout_constraintEnd_toEndOf="@id/tituloAlarma"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="top"
+        android:scaleType="fitXY"
+        android:src="@drawable/layered_background"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/nombreAlarma"
+        android:singleLine="true"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/selectTimeBtn"
+        app:layout_constraintStart_toStartOf="@id/selectTimeBtn"
+        app:layout_constraintEnd_toEndOf="@id/selectTimeBtn"
+        android:layout_marginTop="200dp"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:elevation="11dp"
+        android:textColorHint="@color/black"
+        android:hint="Nombre de la alarma"
+        android:fontFamily="@font/montserrat"
+
+        android:background="@drawable/rounded_edittext"
+        android:padding="8dp">
+    </androidx.appcompat.widget.AppCompatEditText>
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/descripcionAlarma"
+        android:singleLine="true"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/nombreAlarma"
+        app:layout_constraintStart_toStartOf="@id/nombreAlarma"
+        app:layout_constraintEnd_toEndOf="@id/nombreAlarma"
+        android:layout_marginTop="15dp"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:elevation="11dp"
+        android:hint="Descripción de la alarma"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:fontFamily="@font/montserrat"
+        android:background="@drawable/rounded_edittext"
+        android:padding="8dp">
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+
+
+    <Button
+        android:id="@+id/setAlarmBtn"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:background="@android:color/system_outline_variant_dark"
+        app:layout_constraintTop_toBottomOf="@id/descripcionAlarma"
+        app:layout_constraintStart_toStartOf="@id/descripcionAlarma"
+        app:layout_constraintEnd_toEndOf="@id/descripcionAlarma"
+        android:layout_marginTop="50dp"
+        android:text="Confirmar alarma"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:elevation="16dp"
+        tools:targetApi="upside_down_cake" />
+</androidx.constraintlayout.widget.ConstraintLayout>

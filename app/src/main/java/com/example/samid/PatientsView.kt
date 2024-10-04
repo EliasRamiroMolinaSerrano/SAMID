@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -30,7 +31,12 @@ class PatientsView : AppCompatActivity() {
         }
 
         // Configuración del toggle para abrir/cerrar el menú lateral con el botón de "hamburguesa"
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -44,19 +50,17 @@ class PatientsView : AppCompatActivity() {
                     true
                 }
                 R.id.patients_view -> {
-                    val intent = Intent(this, PatientsView::class.java)
-                    startActivity(intent)
+                    // No necesitas hacer nada aquí porque ya estás en PatientsView
                     true
                 }
                 R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
-
-                    // Acción para "Weekly Analysis"
                     true
                 }
                 R.id.check_now -> {
-                    // Acción para "Check Now"
+                    val intent = Intent(this, CheckNow::class.java) // Navegar a CheckNow
+                    startActivity(intent)
                     true
                 }
                 R.id.history -> {
@@ -64,8 +68,7 @@ class PatientsView : AppCompatActivity() {
                     true
                 }
                 R.id.device_status -> {
-                    // Navegar a otra actividad
-                    val intent = Intent(this, DeviceStatus::class.java)  // Cambia AnotherActivity según sea necesario
+                    val intent = Intent(this, DeviceStatus::class.java)
                     startActivity(intent)
                     true
                 }
@@ -79,6 +82,12 @@ class PatientsView : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        // Configura el listener para el CardView
+        findViewById<CardView>(R.id.cardPatients).setOnClickListener {
+            val intent = Intent(this, CheckNow::class.java) // Cambia a la actividad CheckNow
+            startActivity(intent) // Inicia la actividad
         }
     }
 
