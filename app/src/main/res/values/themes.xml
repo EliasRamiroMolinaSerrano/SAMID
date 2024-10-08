@@ -1,16 +1,30 @@
+<!-- themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    <!-- Base application theme -->
     <style name="Base.Theme.SAMID" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Desactiva el cambio automático de colores en modo oscuro -->
+        <item name="android:forceDarkAllowed">false</item>
+
+        <!-- Define tus colores principales aquí -->
+        <item name="colorPrimary">@color/Primary_Normal</item>
+        <item name="colorPrimaryVariant">@color/Primary_Dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/Secondary_Normal</item>
+        <item name="colorSecondaryVariant">@color/Secondary_Darker</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorSurface">@color/BlueLight</item>
+        <item name="colorOnBackground">@color/Gray</item>
+        <item name="colorOnSurface">@color/GrayLow</item>
     </style>
 
     <style name="Theme.SAMID" parent="Base.Theme.SAMID" />
+
     <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash_screen</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
+
 </resources>
-
-
-

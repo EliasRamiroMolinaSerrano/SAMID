@@ -74,9 +74,8 @@
                         android:layout_marginStart="25dp"
                         android:contentDescription="@string/batteryicon"
                         android:src="@drawable/battery_svg"
-                        app:tint="#7CFC00" />
+                        app:tint="@color/Red" />
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -97,21 +96,38 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/status"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/desease"
                         android:textColor="@color/Primary_Dark"
                         android:textSize="18sp" />
-                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="48dp"
-                    android:text="@string/patient_id"
-                    android:textColor="@color/Primary_Dark"
-                    android:textSize="18sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="Checar"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginStart="8dp"
+                            android:text="Aparato"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -194,7 +210,21 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Button to add a new patient -->
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/delete_ic"
+            app:layout_constraintEnd_toEndOf="@id/cardPatients"
+            app:layout_constraintTop_toTopOf="@id/cardPatients"
+            app:layout_constraintBottom_toBottomOf="@id/cardPatients"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="-50dp"
+            android:elevation="10dp"
+            android:layout_marginBottom="48dp"
+            android:src="@drawable/delete_ic" />
+
         <ImageView
             android:id="@+id/addButton"
             android:layout_width="70dp"
@@ -218,5 +248,5 @@
         app:itemTextColor="@color/Primary_Dark"
         app:menu="@menu/nav_menu"
         android:background="@color/white"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="50dp" />
 </androidx.drawerlayout.widget.DrawerLayout>

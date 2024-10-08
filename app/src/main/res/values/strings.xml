@@ -65,5 +65,12 @@
     <string name="cargando_datos">Cargando datos...</string>
     <string name="paciente">Paciente</string>
     <string name="manuel">Manuel</string>
+    <string name="desease">Desease</string>
+    <string name="delete_ic">Delete_ic</string>
+    <string name="v">V</string>
+    <string name="j">J</string>
+    <string name="m">M</string>
+    <string name="l">L</string>
+    <string name="an_lisis_semanal_de_manuel">Análisis semanal de Manuel</string>
     Layout_Header
 </resources>
