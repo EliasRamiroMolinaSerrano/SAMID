@@ -20,7 +20,7 @@ class WeeklyStats : AppCompatActivity() {
 
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
+        navView = findViewById(R.id.navigation_view)
 
         // Icono del menú (rayas/hamburguesa)
         val rayasIcon = findViewById<ImageView>(R.id.rayas)

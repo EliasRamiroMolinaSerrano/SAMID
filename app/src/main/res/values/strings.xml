@@ -72,5 +72,21 @@
     <string name="m">M</string>
     <string name="l">L</string>
     <string name="an_lisis_semanal_de_manuel">Análisis semanal de Manuel</string>
+    <string name="switch_ic">switch_ic</string>
+    <string name="_1_line">1 line</string>
+    <string name="_2_line">2 line</string>
+    <string name="_5_line">5 line</string>
+    <string name="_4_line">4 line</string>
+    <string name="_3_line">3 line</string>
+    <string name="_6_line">6 line</string>
+    <string name="_7_line">7 line</string>
+    <string name="_8_line">8 line</string>
+    <string name="_9_line">9 line</string>
+    <string name="_10_line">10 line</string>
+    <string name="d">D</string>
+    <string name="s">S</string>
+    <string name="_12_line">12 line</string>
+    <string name="_13_line">13 line</string>
+    <string name="_11_line">11 line</string>
     Layout_Header
 </resources>
