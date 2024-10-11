@@ -62,7 +62,7 @@
     <string name="register">Register</string>
     <string name="i_have_already_an_account">I have already an account</string>
     <string name="user_s_weekly_stats">User´s weekly stats</string>
-    <string name="cargando_datos">Cargando datos...</string>
+    <string name="cargando_datos">Cargando datos…</string>
     <string name="paciente">Paciente</string>
     <string name="manuel">Manuel</string>
     <string name="desease">Desease</string>
@@ -88,5 +88,10 @@
     <string name="_12_line">12 line</string>
     <string name="_13_line">13 line</string>
     <string name="_11_line">11 line</string>
+    <string name="paciente_manuel">Paciente Manuel</string>
+    <string name="pulso_y_oxigeno_monitor">Pulso y oxigeno monitor</string>
+    <string name="_90">90</string>
+    <string name="historial_semanal">Historial semanal</string>
+    <string name="circulo">circulo</string>
     Layout_Header
 </resources>
