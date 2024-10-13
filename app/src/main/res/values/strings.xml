@@ -93,5 +93,10 @@
     <string name="_90">90</string>
     <string name="historial_semanal">Historial semanal</string>
     <string name="circulo">circulo</string>
+    <string name="phone_ic">phone_ic</string>
+    <string name="results">results</string>
+    <string name="resultados">Resultados</string>
+    <string name="ubication">ubication</string>
+    <string name="ubicaciones">Ubicaciones</string>
     Layout_Header
 </resources>
