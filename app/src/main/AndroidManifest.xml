@@ -36,6 +36,18 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
+            android:name=".HistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryActivityFalls"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryActivityResults"
+            android:exported="true" />
+        <activity
+            android:name=".HistoryActivityCalls"
+            android:exported="true" />
+        <activity
             android:name=".PatientsView"
             android:exported="true" />
         <activity

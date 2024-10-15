@@ -34,10 +34,6 @@
             android:icon="@drawable/devices_ic"
             android:title="@string/device_status" />
 
-        <item
-            android:id="@+id/configuration"
-            android:icon="@drawable/configuration_ic"
-            android:title="@string/configuration" />
     </group>
     <item android:title="">
         <menu>

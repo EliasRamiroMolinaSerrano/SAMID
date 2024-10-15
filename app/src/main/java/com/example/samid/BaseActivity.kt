@@ -14,8 +14,6 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // El diseño será configurado en las subclases
     }
 
     // Setup toolbar, DrawerLayout, and NavigationView
@@ -41,12 +39,12 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.check_now -> {}
             R.id.history -> {}
             R.id.device_status -> {}
-            R.id.configuration -> {}
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

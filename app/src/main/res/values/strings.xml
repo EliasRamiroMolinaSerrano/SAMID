@@ -98,5 +98,28 @@
     <string name="resultados">Resultados</string>
     <string name="ubication">ubication</string>
     <string name="ubicaciones">Ubicaciones</string>
+    <string name="ca_das">Caídas</string>
+    <string name="falls">falls</string>
+    <string name="llamadas">Llamadas</string>
+    <string name="spo2">SpO2</string>
+    <string name="_90_spo2">90 SpO2</string>
+    <string name="_100_lpm">100 LPM</string>
+    <string name="time">time</string>
+    <string name="fecha">fecha</string>
+    <string name="anomalous_behavior_detected">Anomalous Behavior Detected</string>
+    <string name="heart_ic">heart_ic</string>
+    <string name="maria_is_calling_you">Maria is calling you</string>
+    <string name="para_interpretar_el_nivel_de_una_ca_da_observa_la_gr_fica_de_aceleraci_n_en_los_ejes_x_y_y_z_un_pico_significativo_en_la_aceleraci_n_indica_el_impacto_de_la_ca_da_la_magnitud_del_pico_refleja_la_intensidad_del_impacto_cuanto_mayor_es_el_pico_mayor_es_la_fuerza_de_la_ca_da_esta_informaci_n_es_crucial_para_evaluar_la_gravedad_de_la_ca_da_y_tomar_las_medidas_necesarias_para_atender_al_paciente">Para interpretar el nivel de una caída, observa la gráfica de aceleración en los ejes X, Y y Z. Un pico significativo en la aceleración indica el impacto de la caída. La magnitud del pico refleja la intensidad del impacto: cuanto mayor es el pico, mayor es la fuerza de la caída. Esta información es crucial para evaluar la gravedad de la caída y tomar las medidas necesarias para atender al paciente.</string>
+    <string name="nombre_1">Nombre 1</string>
+    <string name="ca_da_leve">caída leve</string>
+    <string name="_1_hora">1 hora</string>
+    <string name="nombre_2">Nombre 2</string>
+    <string name="_2_horas">2 horas</string>
+    <string name="nombre_3">Nombre 3</string>
+    <string name="_3_horas">3 horas</string>
+    <string name="nombre_4">Nombre 4</string>
+    <string name="_4_horas">4 horas</string>
+    <string name="nombre_5">Nombre 5</string>
+    <string name="_5_horas">5 horas</string>
     Layout_Header
 </resources>

@@ -50,7 +50,6 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.check_now -> {}
             R.id.history -> {}
             R.id.device_status -> {}
-            R.id.configuration -> {}
         }
         drawerLayout?.closeDrawer(GravityCompat.START)
         return true

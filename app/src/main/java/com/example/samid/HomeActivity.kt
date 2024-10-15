@@ -2,11 +2,9 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
@@ -60,17 +58,14 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.history -> {
-                    // Acción para "History"
+                    val intent = Intent(this, HistoryActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.device_status -> {
                     // Navegar a la actividad DeviceStatus
                     val intent = Intent(this, DeviceStatus::class.java)
                     startActivity(intent)
-                    true
-                }
-                R.id.configuration -> {
-                    // Acción para "Configuration"
                     true
                 }
                 R.id.nav_logout -> {
@@ -126,6 +121,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         // Cierra el menú lateral si está abierto, en lugar de salir de la actividad directamente
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

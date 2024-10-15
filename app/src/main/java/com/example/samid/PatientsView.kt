@@ -2,7 +2,6 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -44,13 +43,12 @@ class PatientsView : AppCompatActivity() {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Navegar a HomeActivity
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     true
                 }
                 R.id.patients_view -> {
-                    // No necesitas hacer nada aquí porque ya estás en PatientsView
+
                     true
                 }
                 R.id.weekly_analysis -> {
@@ -64,16 +62,13 @@ class PatientsView : AppCompatActivity() {
                     true
                 }
                 R.id.history -> {
-                    // Acción para "History"
+                    val intent = Intent(this, HistoryActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.device_status -> {
                     val intent = Intent(this, DeviceStatus::class.java)
                     startActivity(intent)
-                    true
-                }
-                R.id.configuration -> {
-                    // Acción para "Configuration"
                     true
                 }
                 R.id.nav_logout -> {
@@ -91,6 +86,7 @@ class PatientsView : AppCompatActivity() {
         }
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         // Cierra el menú lateral si está abierto, en lugar de salir de la actividad directamente
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
