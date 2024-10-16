@@ -15,7 +15,7 @@
 
         android:layout_marginTop="100dp"
         android:fontFamily="@font/montserrat"
-        android:text="Registrar nuevo paciente"
+        android:text="@string/registrar_nuevo_paciente"
         android:textColor="@color/Primary_Dark"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"

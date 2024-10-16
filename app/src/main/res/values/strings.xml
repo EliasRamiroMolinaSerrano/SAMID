@@ -121,5 +121,6 @@
     <string name="_4_horas">4 horas</string>
     <string name="nombre_5">Nombre 5</string>
     <string name="_5_horas">5 horas</string>
+    <string name="registrar_nuevo_paciente">Registrar nuevo paciente</string>
     Layout_Header
 </resources>
