@@ -9,6 +9,10 @@
     tools:context=".AlarmActivity"
     android:background="@color/white">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/go_back_header" />
+
     <TextView
         android:id="@+id/tituloAlarma"
         android:layout_width="wrap_content"
@@ -101,7 +105,7 @@
         android:id="@+id/setAlarmBtn"
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:background="@android:color/system_outline_variant_dark"
+        android:background="@drawable/shadow"
         app:layout_constraintTop_toBottomOf="@id/descripcionAlarma"
         app:layout_constraintStart_toStartOf="@id/descripcionAlarma"
         app:layout_constraintEnd_toEndOf="@id/descripcionAlarma"

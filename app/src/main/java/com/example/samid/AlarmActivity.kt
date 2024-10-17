@@ -11,6 +11,7 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,12 @@ class AlarmActivity : AppCompatActivity() {
         binding = ActivityAlarmBinding.inflate(layoutInflater)  // Ajustar el binding
         setContentView(binding.root)
         createNotificationChannel()
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
 
         // Solicitar permisos para notificaciones
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

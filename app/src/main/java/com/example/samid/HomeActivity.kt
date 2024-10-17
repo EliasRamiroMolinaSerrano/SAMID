@@ -2,9 +2,11 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
@@ -81,7 +83,7 @@ class HomeActivity : AppCompatActivity() {
 
             // Set an onClickListener to show the custom dialog when pacientBtn is clicked
         pacientBtn.setOnClickListener {
-            /*
+
             // Inflate the custom dialog layout
             val customDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
 
@@ -101,7 +103,7 @@ class HomeActivity : AppCompatActivity() {
             okBtn.setOnClickListener {
                 dialogBuilder.dismiss() // Close the dialog when OK is clicked
             }
-            */
+
         }
 
         pacientBtn.setOnClickListener {

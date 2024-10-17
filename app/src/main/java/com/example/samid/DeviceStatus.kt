@@ -50,22 +50,20 @@ class DeviceStatus : AppCompatActivity() {
                 R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
-
-                    // Acción para "Weekly Analysis"
                     true
                 }
                 R.id.check_now -> {
-                    // Acción para "Check Now"
+                    val intent = Intent(this, CheckNow::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.history -> {
-                    // Acción para "History"
+                    val intent = Intent(this, HistoryActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.device_status -> {
-                    // Navegar a otra actividad
-                    val intent = Intent(this, DeviceStatus::class.java)  // Cambia AnotherActivity según sea necesario
-                    startActivity(intent)
+
                     true
                 }
                 R.id.nav_logout -> {

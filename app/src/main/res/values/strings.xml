@@ -122,5 +122,13 @@
     <string name="nombre_5">Nombre 5</string>
     <string name="_5_horas">5 horas</string>
     <string name="registrar_nuevo_paciente">Registrar nuevo paciente</string>
+    <string name="_44">44</string>
+    <string name="lpm">LPM</string>
+    <string name="_48">48</string>
+    <string name="samid_rastrea_a_tus_pacientes_instantantaneamente">SAMID rastrea a tus pacientes instantantaneamente.</string>
+    <string name="encuentra_a_tu_paciente">Encuentra a tu paciente</string>
+    <string name="si_el_paciente_necesita_medicaci_n_puedes_programar_alarmas_con_samid">Si el paciente necesita medicación, puedes programar alarmas con samid</string>
+    <string name="configurar_alarmas">Configurar alarmas</string>
+    <string name="background">background</string>
     Layout_Header
 </resources>
