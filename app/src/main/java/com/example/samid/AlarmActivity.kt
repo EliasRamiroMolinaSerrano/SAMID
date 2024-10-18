@@ -32,37 +32,37 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var alarmManager: AlarmManager
     private lateinit var pendingIntent: PendingIntent
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmBinding.inflate(layoutInflater)  // Ajustar el binding
         setContentView(binding.root)
         createNotificationChannel()
 
+        // Configurar el botón de agregar alarma
         binding.setAlarmBtn.setOnClickListener {
             val nombrePaciente = findViewById<EditText>(R.id.nombrePaciente).text.toString()
             val descripcion = findViewById<EditText>(R.id.descripcionAlarma).text.toString()
             val nombreAlarma = findViewById<EditText>(R.id.nombreAlarma).text.toString()
 
-            // Crear un Intent para iniciar la nueva actividad
+            // Llamar a la función que configura la alarma
+            setAlarm()
+
+            // Crear un Intent para iniciar AlarmsViewActivity
             val intent = Intent(this, AlarmsViewActivity::class.java)
 
-            // Pasar los datos a la nueva actividad
-            // Pasar los datos a la nueva actividad con claves consistentes
+            // Pasar los datos a AlarmsViewActivity
             intent.putExtra("nombrePaciente", nombrePaciente)
-            intent.putExtra("nombreAlarma", nombreAlarma)  // Cambia la clave a "nombreAlarma" en lugar de "nombre alarma"
+            intent.putExtra("nombreAlarma", nombreAlarma)  // Asegúrate de usar la clave correcta
             intent.putExtra("descripcion", descripcion)
 
-            // Iniciar la nueva actividad
+            // Iniciar AlarmsViewActivity
             startActivity(intent)
         }
 
-
-
-        // Set up the back button
-        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        // Configurar el botón de retroceso
+        val backButton = findViewById<ImageView>(R.id.flecha) // Reemplaza con el ID real de tu botón de retroceso
         backButton.setOnClickListener {
-            finish() // This will finish the current activity and go back to the previous one
+            finish() // Esto cerrará la actividad actual y volverá a la anterior
         }
 
         // Solicitar permisos para notificaciones
@@ -74,10 +74,6 @@ class AlarmActivity : AppCompatActivity() {
 
         binding.selectTimeBtn.setOnClickListener {
             showTimePicker()
-        }
-
-        binding.setAlarmBtn.setOnClickListener {
-            setAlarm()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -164,9 +160,5 @@ class AlarmActivity : AppCompatActivity() {
                 return
             }
         }
-
-
     }
-
-
 }
