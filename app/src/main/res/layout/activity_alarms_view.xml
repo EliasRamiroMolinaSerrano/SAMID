@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".RegisterPatient">
+    tools:context=".AlarmsViewActivity">
 
     <TextView
         android:id="@+id/texto1"
@@ -43,7 +43,6 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/shadow"
         app:cardBackgroundColor="@color/Primary_Light"
         app:cardCornerRadius="20dp"
         app:cardElevation="7dp"
@@ -53,46 +52,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="30sp"
-                    android:text="6:30 pm"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Penicilina - 2 pastillas"
-                    android:textColor="@color/Gray"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
             <TextView
+                android:id="@+id/nombrePaciente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="48dp"
+                android:text="Nombre del paciente"
+                android:textColor="@color/Primary_Dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nombreAlarma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Nombre de la alarma"
+                android:textColor="@color/Primary_Dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/descripcionAlarma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Descripción de la alarma"
                 android:textColor="@color/Primary_Dark"
                 android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <Button
+        android:id="@+id/agregarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        app:layout_constraintTop_toBottomOf="@+id/cardPatients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

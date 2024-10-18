@@ -11,6 +11,8 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -30,11 +32,38 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var alarmManager: AlarmManager
     private lateinit var pendingIntent: PendingIntent
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlarmBinding.inflate(layoutInflater)  // Ajustar el binding
         setContentView(binding.root)
         createNotificationChannel()
+
+        binding.setAlarmBtn.setOnClickListener {
+            val nombrePaciente = findViewById<EditText>(R.id.nombrePaciente).text.toString()
+            val descripcion = findViewById<EditText>(R.id.descripcionAlarma).text.toString()
+            val nombreAlarma = findViewById<EditText>(R.id.nombreAlarma).text.toString()
+
+            // Crear un Intent para iniciar la nueva actividad
+            val intent = Intent(this, AlarmsViewActivity::class.java)
+
+            // Pasar los datos a la nueva actividad
+            // Pasar los datos a la nueva actividad con claves consistentes
+            intent.putExtra("nombrePaciente", nombrePaciente)
+            intent.putExtra("nombreAlarma", nombreAlarma)  // Cambia la clave a "nombreAlarma" en lugar de "nombre alarma"
+            intent.putExtra("descripcion", descripcion)
+
+            // Iniciar la nueva actividad
+            startActivity(intent)
+        }
+
+
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
 
         // Solicitar permisos para notificaciones
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

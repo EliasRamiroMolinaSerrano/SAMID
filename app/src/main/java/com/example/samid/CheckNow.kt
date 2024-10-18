@@ -16,7 +16,7 @@ class CheckNow : AppCompatActivity() {
 
 
         binding.card3.setOnClickListener {
-            val intent = Intent(this, AlarmActivity::class.java)
+            val intent = Intent(this, AlarmsViewActivity::class.java)
             startActivity(intent)
         }
     }

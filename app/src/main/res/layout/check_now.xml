@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
+    android:id="@+id/check_now"
     tools:context=".CheckNow"
     tools:ignore="ExtraText">
 
@@ -29,9 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-
-            >
+            android:padding="16dp">
 
             <LinearLayout
                 android:id="@+id/top_row"
@@ -48,6 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/paciente"
                     android:layout_marginEnd="16dp"
+                    android:textColor="@color/Secondary_Normal"
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_semi_bold"/>
@@ -58,6 +58,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manuel"
                     android:layout_marginEnd="16dp"
+                    android:textColor="@color/Secondary_Normal"
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_semi_bold"/>
@@ -67,6 +68,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:contentDescription="@string/switch_ic"
                     android:src="@drawable/switch_ic" />
             </LinearLayout>
 
@@ -82,45 +84,54 @@
                     android:id="@+id/item4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="44 ms"
-                    android:textSize="20dp"
-                    android:layout_marginEnd="16dp"
-
-                    />
-
-
+                    android:text="@string/_44"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/Primary_Normal"/>
                 <TextView
                     android:id="@+id/item5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="84 bpm"
-                    android:textSize="20dp"
-                    android:layout_marginEnd="16dp" />
+                    android:textSize="25sp"
+                    android:textColor="@color/Secondary_Darker"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/lpm" />
 
                 <TextView
                     android:id="@+id/item6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="44spO2" />
+                    android:text="@string/_48"
+                    android:textColor="@color/Primary_Normal"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:layout_marginEnd="10dp" />
+                <TextView
+                    android:id="@+id/item7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textColor="@color/Secondary_Darker"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/spo2" />
             </LinearLayout>
 
             <Button
                 android:layout_gravity="center_horizontal"
                 android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:text="check now"
+                android:text="@string/check_now"
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:textSize="18sp"
                 android:background="@drawable/rounded_button"
                 android:fontFamily="@font/montserrat_bold"
                 android:id="@+id/check_btn"/>
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card2"
@@ -138,7 +149,7 @@
         <TextView
             android:layout_width="216dp"
             android:layout_height="wrap_content"
-            android:text="SAMID rastrea a tus pacientes instantantaneamente."
+            android:text="@string/samid_rastrea_a_tus_pacientes_instantantaneamente"
             android:elevation="14dp"
             android:textColor="@color/black"
             android:layout_marginTop="100dp"
@@ -146,7 +157,6 @@
             android:layout_weight="1"
             android:textSize="11.5sp"
             android:fontFamily="@font/montserrat">
-
         </TextView>
 
         <FrameLayout
@@ -157,32 +167,32 @@
             android:elevation="12dp"
             android:layout_marginTop="34dp">
 
-
             <ImageView
                 android:id="@+id/circuloGrande"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
+                android:contentDescription="@string/ubication"
                 android:src="@drawable/circle"
                 android:elevation="10dp"
                 android:scaleType="fitXY"
                 app:tint="@color/white" />
 
-
             <ImageView
                 android:id="@+id/circuloChico"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:contentDescription="@string/circulo"
                 android:src="@drawable/circle"
                 android:elevation="11dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
                 app:tint="@color/moradoFuerte" />
 
-
             <ImageView
                 android:id="@+id/location"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/ubication"
                 android:src="@drawable/location_pin_svgrepo_com"
                 android:elevation="12dp"
                 android:scaleType="fitXY"
@@ -191,22 +201,20 @@
 
         </FrameLayout>
 
-
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="80.2dp"
             android:layout_gravity="top"
+            android:contentDescription="@string/background"
             android:src="@drawable/layered_background"
             android:elevation="9dp"
             android:scaleType="fitXY">
-
         </ImageView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Encuentra a tu paciente"
+            android:text="@string/encuentra_a_tu_paciente"
             android:elevation="14dp"
             android:textColor="@color/azulfuerte"
             android:layout_marginTop="30dp"
@@ -214,15 +222,9 @@
             android:layout_weight="1"
             android:textSize="17sp"
             android:fontFamily="@font/montserrat_bold">
-
         </TextView>
 
-
-
-
-
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card3"
@@ -240,7 +242,7 @@
         <TextView
             android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:text="Si el paciente necesita medicación, puedes programar alarmas con samid"
+            android:text="@string/si_el_paciente_necesita_medicaci_n_puedes_programar_alarmas_con_samid"
             android:elevation="14dp"
             android:textColor="@color/black"
             android:layout_marginTop="100dp"
@@ -248,7 +250,6 @@
             android:layout_weight="1"
             android:textSize="11.5sp"
             android:fontFamily="@font/montserrat">
-
         </TextView>
 
         <FrameLayout
@@ -259,7 +260,6 @@
             android:elevation="12dp"
             android:layout_marginTop="34dp">
 
-
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
@@ -267,7 +267,6 @@
                 android:elevation="10dp"
                 android:scaleType="fitXY"
                 app:tint="@color/white" />
-
 
             <ImageView
                 android:layout_width="75dp"
@@ -278,7 +277,6 @@
                 android:layout_gravity="center"
                 app:tint="@color/moradoFuerte" />
 
-
             <ImageView
                 android:id="@+id/reloj"
                 android:layout_width="50dp"
@@ -288,10 +286,7 @@
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
                 app:tint="@color/white" />
-
         </FrameLayout>
-
-
 
         <ImageView
             android:layout_width="match_parent"
@@ -306,7 +301,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Configurar alarmas"
+            android:text="@string/configurar_alarmas"
             android:elevation="14dp"
             android:textColor="@color/azulfuerte"
             android:layout_marginTop="30dp"
@@ -317,11 +312,6 @@
 
         </TextView>
 
-
-
-
-
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
