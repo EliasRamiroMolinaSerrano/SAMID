@@ -3,6 +3,7 @@ package com.example.samid
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,7 +17,6 @@ class AlarmsViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inicializar el binding con ActivityAlarmsViewBinding
         binding = ActivityAlarmsViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -25,10 +25,18 @@ class AlarmsViewActivity : AppCompatActivity() {
         val nombreAlarma = intent.getStringExtra("nombreAlarma")
         val descripcion = intent.getStringExtra("descripcion")
 
-        // Mostrar los datos en los campos correspondientes
-        binding.nombrePaciente.setText(nombrePaciente)
-        binding.nombreAlarma.setText(nombreAlarma)
-        binding.descripcionAlarma.setText(descripcion)
+        // Verificar si hay datos para mostrar
+        if (nombrePaciente.isNullOrEmpty() || nombreAlarma.isNullOrEmpty() || descripcion.isNullOrEmpty()) {
+            // Ocultar el CardView si no hay datos
+            binding.cardPatients.visibility = View.GONE
+            binding.texto2.text = "No hay alarmas configuradas."
+        } else {
+            // Mostrar el CardView con los datos de la alarma
+            binding.cardPatients.visibility = View.VISIBLE
+            binding.nombrePaciente.text = nombrePaciente
+            binding.nombreAlarma.text = nombreAlarma
+            binding.descripcionAlarma.text = descripcion
+        }
 
         // Configurar el botón de agregar alarma
         binding.agregarBtn.setOnClickListener {
