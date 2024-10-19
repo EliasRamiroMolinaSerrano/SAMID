@@ -1,156 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@android:color/white"
+    android:fillViewport="true">
 
-    <include
-        android:id="@+id/header"
-        layout="@layout/go_back_header" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/paciente_manuel"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="20sp"
-        android:layout_marginTop="110dp"
-        android:textColorHint="@color/Secondary_Darker"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pulso_y_oxigeno_monitor"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"
-        android:textColorHint="@color/Secondary_Darker"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card"
-        android:layout_width="350dp"
-        android:layout_height="250dp"
-        android:background="@drawable/shadow"
-        app:cardBackgroundColor="@color/Primary_Light"
-        app:cardCornerRadius="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Pulso y oxigeno monitor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
-    <ImageView
-        android:id="@+id/pulse"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:contentDescription="@string/circulo"
-        android:src="@drawable/circle_test"
-        android:layout_marginStart="10dp"
-        app:layout_constraintTop_toTopOf="@id/card"
-        app:layout_constraintStart_toStartOf="@id/card"
-        app:layout_constraintBottom_toBottomOf="@id/card"
-        android:elevation="6dp"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/indicatorsCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtitleTextView">
 
-    <ImageView
-        android:id="@+id/oxigen"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/circle_test"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="@string/circulo"
-        app:layout_constraintTop_toTopOf="@id/card"
-        app:layout_constraintEnd_toEndOf="@id/card"
-        app:layout_constraintBottom_toBottomOf="@id/card"
-        android:elevation="6dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/information"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/info_ic"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:contentDescription="@string/contact_info"
-        app:layout_constraintTop_toTopOf="@id/card"
-        app:layout_constraintEnd_toEndOf="@id/card"
-        android:elevation="6dp"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/heart"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/heart_rate_ic"
-        app:layout_constraintTop_toTopOf="@id/pulse"
-        app:layout_constraintEnd_toEndOf="@id/pulse"
-        app:layout_constraintStart_toStartOf="@id/pulse"
-        app:layout_constraintBottom_toBottomOf="@id/pulse"
-        android:contentDescription="@string/icon"
-        android:layout_marginBottom="70dp"
-        android:elevation="6dp"/>
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/heart_rate_ic"
+                        app:tint="@android:color/holo_red_dark" />
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_90"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="50sp"
-        android:layout_marginTop="30dp"
-        android:textColorHint="@color/Secondary_Darker"
-        app:layout_constraintTop_toTopOf="@id/pulse"
-        app:layout_constraintEnd_toEndOf="@id/pulse"
-        app:layout_constraintStart_toStartOf="@id/pulse"
-        app:layout_constraintBottom_toBottomOf="@id/pulse"
-        android:elevation="6dp"/>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="8dp"
+                        app:cardBackgroundColor="#FFEBEE"
+                        app:cardCornerRadius="50dp">
 
-    <ImageView
-        android:id="@+id/sp02"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/oxigen_ic"
-        app:layout_constraintTop_toTopOf="@id/oxigen"
-        app:layout_constraintEnd_toEndOf="@id/oxigen"
-        app:layout_constraintStart_toStartOf="@id/oxigen"
-        app:layout_constraintBottom_toBottomOf="@id/oxigen"
-        android:contentDescription="@string/icon"
-        android:layout_marginBottom="70dp"
-        android:elevation="6dp"/>
+                        <TextView
+                            android:id="@+id/bpmTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="72"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/result_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/_90"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="50sp"
-        android:layout_marginTop="30dp"
-        android:textColorHint="@color/Secondary_Darker"
-        app:layout_constraintTop_toTopOf="@id/oxigen"
-        app:layout_constraintEnd_toEndOf="@id/oxigen"
-        app:layout_constraintStart_toStartOf="@id/oxigen"
-        app:layout_constraintBottom_toBottomOf="@id/oxigen"
-        android:elevation="6dp"/>
+                    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tittle_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/historial_semanal"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="20sp"
-        android:layout_marginTop="30dp"
-        android:textColorHint="@color/Secondary_Darker"
-        app:layout_constraintTop_toBottomOf="@id/card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BPM"
+                        android:textStyle="bold" />
 
+                </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/oxigen_ic"
+                        app:tint="@android:color/holo_blue_dark" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="8dp"
+                        app:cardBackgroundColor="#E3F2FD"
+                        app:cardCornerRadius="50dp">
+
+                        <TextView
+                            android:id="@+id/spo2TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="98%"
+                            android:textColor="@android:color/holo_blue_dark"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SPO2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chartsCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/indicatorsCardView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Beat and SPO2 Graphics"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Heart Rate"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/heartRateChartView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/holo_red_light" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="SPO2 Level"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/spo2ChartView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/holo_blue_light" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
