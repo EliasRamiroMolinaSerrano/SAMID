@@ -40,7 +40,7 @@ class AlarmsViewActivity : AppCompatActivity() {
 
         // Configurar el botón de agregar alarma
         binding.agregarBtn.setOnClickListener {
-            val intent = Intent(this, AlarmActivity::class.java)
+            val intent = Intent(this, PatientsView::class.java)
             startActivity(intent)
         }
 
