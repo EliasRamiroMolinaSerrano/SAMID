@@ -11,6 +11,7 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -37,10 +38,31 @@ class AlarmActivity : AppCompatActivity() {
         setContentView(binding.root)
         createNotificationChannel()
 
-        // Set up the back button
-        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        // Configurar el botón de agregar alarma
+        binding.setAlarmBtn.setOnClickListener {
+            val nombrePaciente = findViewById<EditText>(R.id.nombrePaciente).text.toString()
+            val descripcion = findViewById<EditText>(R.id.descripcionAlarma).text.toString()
+            val nombreAlarma = findViewById<EditText>(R.id.nombreAlarma).text.toString()
+
+            // Llamar a la función que configura la alarma
+            setAlarm()
+
+            // Crear un Intent para iniciar AlarmsViewActivity
+            val intent = Intent(this, AlarmsViewActivity::class.java)
+
+            // Pasar los datos a AlarmsViewActivity
+            intent.putExtra("nombrePaciente", nombrePaciente)
+            intent.putExtra("nombreAlarma", nombreAlarma)  // Asegúrate de usar la clave correcta
+            intent.putExtra("descripcion", descripcion)
+
+            // Iniciar AlarmsViewActivity
+            startActivity(intent)
+        }
+
+        // Configurar el botón de retroceso
+        val backButton = findViewById<ImageView>(R.id.flecha) // Reemplaza con el ID real de tu botón de retroceso
         backButton.setOnClickListener {
-            finish() // This will finish the current activity and go back to the previous one
+            finish() // Esto cerrará la actividad actual y volverá a la anterior
         }
 
         // Solicitar permisos para notificaciones
@@ -52,10 +74,6 @@ class AlarmActivity : AppCompatActivity() {
 
         binding.selectTimeBtn.setOnClickListener {
             showTimePicker()
-        }
-
-        binding.setAlarmBtn.setOnClickListener {
-            setAlarm()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -142,9 +160,5 @@ class AlarmActivity : AppCompatActivity() {
                 return
             }
         }
-
-
     }
-
-
 }
