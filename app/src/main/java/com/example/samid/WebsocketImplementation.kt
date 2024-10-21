@@ -1,5 +1,6 @@
 package com.example.samid
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
@@ -24,16 +25,16 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun setupWebSocket() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("ws://192.168.0.115:8081") // Replace with your Raspberry Pi WebSocket URL
+            .url("ws://192.168.0.116:8081") // Replace with your Raspberry Pi WebSocket URL
             .build()
 
         val webSocketListener = object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
-                // Connection established
+                Log.d("WebSocket", "Connection established")
             }
 
             override fun onMessage(webSocket: WebSocket, text: String) {
-                // Handle the message received
+                Log.d("WebSocket", "Message received: $text") // Log the received message
                 runOnUiThread {
                     updateUIWithSensorData(text)
                 }
@@ -57,15 +58,20 @@ class WebsocketImplementation : AppCompatActivity() {
     }
 
     private fun updateUIWithSensorData(data: String) {
-        // Parse the JSON received from WebSocket
-        val jsonObject = JSONObject(data)
-        val bpm = jsonObject.getInt("pulse")
-        val spo2 = jsonObject.getInt("spo2")
+        try {
+            // Parse the JSON received from WebSocket
+            val jsonObject = JSONObject(data)
+            val bpm = jsonObject.getInt("pulse")
+            val spo2 = jsonObject.getInt("spo2")
 
-        // Update the TextViews
-        bpmTextView.text = "$bpm BPM"
-        spo2TextView.text = "$spo2 % SPO2"
+            // Update the TextViews
+            bpmTextView.text = "$bpm BPM"
+            spo2TextView.text = "$spo2 % SPO2"
+        } catch (e: Exception) {
+            Log.e("WebSocket", "Error parsing JSON: ${e.message}")
+        }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
