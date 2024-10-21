@@ -63,6 +63,9 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
+            android:name=".WebsocketImplementation"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true"
             android:theme="@style/SplashScreen" >

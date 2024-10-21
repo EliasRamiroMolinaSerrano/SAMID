@@ -51,4 +51,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v121)
+
+    // for websocket support
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("org.json:json:20210307") // Add this for JSON parsing if it's not included
+
+
 }
