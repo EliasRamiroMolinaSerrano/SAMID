@@ -8,14 +8,14 @@
     <color name="celestee">#D8EFFF</color>
     <color name="verde">#D8FFE1</color>
     <color name="azulfuerte">#2E268E</color>
-    <color name="Primary_Light">#DCF9F7</color>
+    <color name="Primary_Light">#F2F0FB</color>
     <color name="Primary_Light_active">#d7d0f3</color>
     <color name="VioletLightHover">#ECE8F9</color>
-    <color name="Primary_Buttoms">#47C5C2</color>
+    <color name="Primary_Buttoms">#6452ad</color>
     <color name="Primary_Dark">#2C244C</color>
     <color name="VioletLightActive">#D7D0F3</color>
     <color name="BlueLight">#FCFBFF</color>
-    <color name="Primary_Normal">#47C5C2</color>
+    <color name="Primary_Normal">#7d66d8</color>
     <color name="Secondary_Normal">#2e268e</color>
     <color name="Secondary_Darker">#100d32</color>
     <color name="Secondary_Light">#eae9f4</color>
@@ -25,5 +25,8 @@
     <color name="moradoFuerte">#7D66D8</color>
     <color name="light_gray">#B0B0B0</color>
     <color name="Red">#FB3C3C</color>
+
+
+
 
 </resources>

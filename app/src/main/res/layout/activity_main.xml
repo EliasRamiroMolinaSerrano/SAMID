@@ -16,10 +16,10 @@
         tools:ignore="UselessParent">
 
         <ImageView
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="250dp"
             android:contentDescription="@string/icon"
-            android:src="@drawable/new_logo" />
+            android:src="@drawable/logo_app" />
 
         <EditText
             android:layout_width="350dp"
@@ -71,13 +71,14 @@
             android:fontFamily="@font/montserrat"
             android:textSize="16sp"/>
 
+        <!-- Aquí está el RelativeLayout con las líneas a los lados y el texto centrado -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp">
 
             <TextView
-                android:contentDescription="@string/left_line"
+                android:contentDescription="left line"
                 android:layout_width="128dp"
                 android:layout_height="2dp"
                 android:background="@drawable/line"
@@ -86,7 +87,7 @@
                 android:layout_marginEnd="16dp" />
 
             <TextView
-                android:contentDescription="@string/right_line"
+                android:contentDescription="right line"
                 android:layout_width="128dp"
                 android:layout_height="2dp"
                 android:background="@drawable/line"
@@ -104,68 +105,40 @@
                 android:textSize="16sp"/>
         </RelativeLayout>
 
-        <!-- New LinearLayout for Facebook and Google buttons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:baselineAligned="false"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="16dp">
 
-            <!-- Facebook button -->
-            <LinearLayout
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/facebook_logo"
+                android:src="@drawable/facebook_logo"
                 android:id="@+id/facebook_btn"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@drawable/rounded_corners_with_shadow">
+                android:padding="4dp"
+                android:layout_margin="16dp"
+                />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/facebook_logo"
-                    android:contentDescription="@string/facebook_logo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/facebook"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_marginStart="8dp" />
-            </LinearLayout>
-
-            <!-- Google button -->
-            <LinearLayout
-                android:id="@+id/google_btn"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="@drawable/rounded_corners_with_shadow">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/google_logo"
-                    android:contentDescription="@string/google_logo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/google"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_marginStart="8dp" />
-            </LinearLayout>
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="16dp"
+                android:contentDescription="@string/google_logo"
+                android:src="@drawable/google_logo"
+                android:padding="4dp"
+                android:id="@+id/google_btn"/>
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="@string/email_logo"
+            android:src="@drawable/email_logo"
+            android:id="@+id/email_btn"/>
     </LinearLayout>
+
 </RelativeLayout>
