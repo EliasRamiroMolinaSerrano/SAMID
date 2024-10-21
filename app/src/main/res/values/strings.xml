@@ -130,5 +130,6 @@
     <string name="si_el_paciente_necesita_medicaci_n_puedes_programar_alarmas_con_samid">Si el paciente necesita medicación, puedes programar alarmas con samid</string>
     <string name="configurar_alarmas">Configurar alarmas</string>
     <string name="background">background</string>
+    <string name="no_tienes_una_cuenta">No tienes una cuenta?</string>
     Layout_Header
 </resources>
