@@ -55,7 +55,7 @@ class MapActivity : AppCompatActivity() {
         locationNames.add(locationName)
         timestamps.add(timestamp)
 
-        // Agregar el marcador en el mapa
+        // Agregar el marcador en el mapaz
         addMarker(location)
 
         // Actualizar las tarjetas
