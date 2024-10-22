@@ -1,6 +1,7 @@
+// build.gradle.kts (App-level)
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.application")
+    kotlin("android")
 }
 
 android {
@@ -10,11 +11,9 @@ android {
     defaultConfig {
         applicationId = "com.example.samid"
         minSdk = 26
-        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,16 +27,17 @@ android {
         }
     }
 
-    buildFeatures{
-        viewBinding = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
@@ -58,10 +58,10 @@ dependencies {
 
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v121)
-
-    // for websocket support
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation("org.json:json:20210307") // Add this for JSON parsing if it's not included
-
+    implementation(libs.okhttp)
+    implementation(libs.json)
+    implementation(libs.mpandroidchart)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 
 }
