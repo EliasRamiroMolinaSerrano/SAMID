@@ -8,12 +8,17 @@
     android:background="@color/white"
     tools:context=".RegisterPatient">
 
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/go_back_header" />
+
     <TextView
         android:id="@+id/texto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/registrar_nuevo_paciente"
         android:textColor="@color/Primary_Dark"
