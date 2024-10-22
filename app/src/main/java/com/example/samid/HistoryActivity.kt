@@ -1,5 +1,4 @@
 package com.example.samid
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -91,7 +90,7 @@ class HistoryActivity : AppCompatActivity() {
 
         val card3 = findViewById<CardView>(R.id.card3)
         card3.setOnClickListener {
-            val intent = Intent(this, HistoryActivityResults::class.java) // Reemplaza DesiredActivity3 con tu actividad real
+            val intent = Intent(this, MapActivity::class.java) // Reemplaza DesiredActivity3 con tu actividad real
             startActivity(intent)
         }
 

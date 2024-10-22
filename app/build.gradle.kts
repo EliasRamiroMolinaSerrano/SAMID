@@ -47,8 +47,13 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation ("org.osmdroid:osmdroid-android:6.1.12") //test
+    implementation ("com.google.android.gms:play-services-location:18.0.0") //test
+
+
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v121)
 

@@ -141,5 +141,10 @@
     <string name="has_tenido_dificultades_con_el_dispositivo">Has tenido dificultades con el dispositivo?</string>
     <string name="_11_02_24">11/02/24</string>
     <string name="_12_12_23">12/12/23</string>
+    <string name="t_tulo_superior">Título Superior</string>
+    <string name="guardar_ubicaci_n">Guardar Ubicación</string>
+    <string name="ubicaciones_guardadas">Ubicaciones Guardadas</string>
+    <string name="ubicaci_n">Ubicación:</string>
+    <string name="hora">Hora:</string>
     Layout_Header
 </resources>
