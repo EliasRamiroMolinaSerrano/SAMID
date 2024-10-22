@@ -25,6 +25,10 @@ class WebsocketImplementation : AppCompatActivity() {
     private lateinit var webSocket: WebSocket
     private lateinit var heartRateChart: LineChart
 
+    private lateinit var spo2Chart: LineChart
+    private var spo2Entries = ArrayList<Entry>()
+    private var spo2Index = 0
+
     private val heartRateEntries = mutableListOf<Entry>()
     private var dataIndex = 0
 
@@ -33,6 +37,9 @@ class WebsocketImplementation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
+
+        spo2Chart = findViewById(R.id.spo2ChartView)
+        setupSpo2Chart()
 
         heartRateChart = findViewById(R.id.heartRateChartView)
         bpmTextView = findViewById(R.id.bpmTextView)
@@ -51,7 +58,7 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun setupWebSocket() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("ws://192.168.0.115:8081") // Update this URL if needed
+            .url("ws://192.168.0.116:8081") // Update this URL if needed
             .build()
 
         val webSocketListener = object : WebSocketListener() {
@@ -81,6 +88,11 @@ class WebsocketImplementation : AppCompatActivity() {
 
                         // Optionally update the heart rate chart here to reflect final state
                         updateHeartRateChart(0) // or any logic to reflect the final state
+                    } else if (jsonData.has("spo2")) {
+                        val spo2Value = jsonData.getInt("spo2")
+                        runOnUiThread {
+                            updateSpo2Chart(spo2Value) // Update SpO2 chart with new value
+                        }
                     }
                 } catch (e: Exception) {
                     Log.e("WebSocket", "Error processing message: ${e.message}")
@@ -189,13 +201,19 @@ class WebsocketImplementation : AppCompatActivity() {
                 lineWidth = 5f // Make the line thicker for better visibility
                 setDrawCircles(false) // Disable circles on data points
                 setDrawFilled(false) // Disable filling the area under the line
+                setDrawValues(false) // Disable numbers on the data points
             }
+
+            // Remove description and legend
+            heartRateChart.description.isEnabled = false
+            heartRateChart.legend.isEnabled = false
 
             // Set the updated data to the chart
             heartRateChart.data = LineData(heartRateDataSet)
             heartRateChart.invalidate() // Refresh the chart
         }
     }
+
 
     private fun updateBpmAndSpo2(avgBpm: Int?, avgSpo2: Int?) {
         // Update the BPM and SpO2 text views if final output is provided
@@ -207,6 +225,54 @@ class WebsocketImplementation : AppCompatActivity() {
             spo2TextView.text = it.toString()
         }
     }
+
+    private fun setupSpo2Chart() {
+        // Add an initial entry with a value of 0
+        spo2Entries.add(Entry(0f, 0f)) // Initialize chart with a 0 value
+
+        val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
+            color = Color.BLUE
+            lineWidth = 2f
+            setDrawCircles(false)
+            setDrawValues(false) // Disable numbers on the data points
+        }
+
+        spo2Chart.data = LineData(spo2DataSet)
+        spo2Chart.setBackgroundColor(Color.WHITE)
+        spo2Chart.setNoDataText("No SpO2 data yet")
+
+        // Remove description and legend
+        spo2Chart.description.isEnabled = false
+        spo2Chart.legend.isEnabled = false
+
+        spo2Chart.invalidate()
+    }
+
+
+
+    private fun updateSpo2Chart(spo2Value: Int) {
+        // Add new data entry to SpO2 dataset
+        spo2Entries.add(Entry(spo2Index.toFloat(), spo2Value.toFloat()))
+        spo2Index++
+
+        // Make sure the chart is set with the correct dataset
+        val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
+            color = Color.BLUE
+            lineWidth = 2f
+            setDrawCircles(false)
+            setDrawFilled(false)
+        }
+
+        // Update the dataset and chart
+        spo2Chart.data = LineData(spo2DataSet)
+        spo2Chart.data.notifyDataChanged()
+        spo2Chart.notifyDataSetChanged()
+        spo2Chart.invalidate()
+
+        // Scroll the chart to the latest data point
+        spo2Chart.moveViewToX(spo2Index.toFloat() - 100)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
