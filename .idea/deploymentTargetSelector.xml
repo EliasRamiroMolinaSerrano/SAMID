@@ -7,10 +7,10 @@
       </SelectionState>
       <SelectionState runConfigName="SAMID">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-22T05:03:58.891694Z">
+        <DropdownSelection timestamp="2024-10-22T15:22:50.693692600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=R52X408A8CR" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=t4byhegynzxouse6" />
             </handle>
           </Target>
         </DropdownSelection>

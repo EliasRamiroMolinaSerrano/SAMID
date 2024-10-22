@@ -24,23 +24,20 @@ class WebsocketImplementation : AppCompatActivity() {
     private lateinit var spo2TextView: TextView
     private lateinit var webSocket: WebSocket
     private lateinit var heartRateChart: LineChart
-
     private lateinit var spo2Chart: LineChart
     private var spo2Entries = ArrayList<Entry>()
     private var spo2Index = 0
-
     private val heartRateEntries = mutableListOf<Entry>()
     private var dataIndex = 0
-
     private var isUpdating = false // To avoid overlapping updates
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
+        // Initialize UI components
         spo2Chart = findViewById(R.id.spo2ChartView)
         setupSpo2Chart()
-
         heartRateChart = findViewById(R.id.heartRateChartView)
         bpmTextView = findViewById(R.id.bpmTextView)
         spo2TextView = findViewById(R.id.spo2TextView)
@@ -58,7 +55,7 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun setupWebSocket() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("ws://192.168.0.116:8081") // Update this URL if needed
+            .url("ws://192.168.0.115:8081") // Update this URL if needed
             .build()
 
         val webSocketListener = object : WebSocketListener() {
@@ -70,24 +67,21 @@ class WebsocketImplementation : AppCompatActivity() {
                 Log.d("WebSocket", "Message received: $text")
                 try {
                     val jsonData = JSONObject(text)
-                    if (jsonData.has("beat")) {
-                        val beatValue = jsonData.getInt("beat")
-                        updateHeartRateChart(beatValue) // Update chart with beat value
-                    } else if (jsonData.has("average_bpm") && jsonData.has("average_spo2")) {
-                        // Handle final average output from ESP32
-                        val avgBpm = jsonData.getInt("average_bpm")
-                        val avgSpo2 = jsonData.getInt("average_spo2")
 
-                        // Log the received average values
+                    // Check for "final_bpm" and "final_spo2"
+                    if (jsonData.has("final_bpm") && jsonData.has("final_spo2")) {
+                        val avgBpm = jsonData.getInt("final_bpm") // Use the correct key
+                        val avgSpo2 = jsonData.getInt("final_spo2") // Use the correct key
+
                         Log.d("WebSocket", "Average BPM: $avgBpm, Average SpO2: $avgSpo2")
 
-                        // Update the BPM and SpO2 TextViews
+                        // Update UI on the main thread
                         runOnUiThread {
-                            updateBpmAndSpo2(avgBpm, avgSpo2) // Call to update BPM and SpO2
+                            updateBpmAndSpo2(avgBpm, avgSpo2)
                         }
-
-                        // Optionally update the heart rate chart here to reflect final state
-                        updateHeartRateChart(0) // or any logic to reflect the final state
+                    } else if (jsonData.has("beat")) {
+                        val beatValue = jsonData.getInt("beat")
+                        updateHeartRateChart(beatValue) // Update chart with beat value
                     } else if (jsonData.has("spo2")) {
                         val spo2Value = jsonData.getInt("spo2")
                         runOnUiThread {
@@ -127,8 +121,6 @@ class WebsocketImplementation : AppCompatActivity() {
         heartRateChart.description.isEnabled = false // Disable description
         heartRateChart.axisLeft.setDrawLabels(false) // Disable Y-axis labels
         heartRateChart.xAxis.setDrawLabels(false) // Disable X-axis labels
-
-        // Set the visible X range, e.g., display the last 100 data points
         heartRateChart.setVisibleXRangeMaximum(100f) // Show 100 points at a time
         heartRateChart.setVisibleXRangeMinimum(100f) // Fix the window to 100 points
         heartRateChart.moveViewToX(0f) // Start at the beginning of the chart
@@ -137,55 +129,38 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun updateHeartRateChart(beatValue: Int) {
         if (!isUpdating) { // Avoid overlapping updates
             isUpdating = true
-
             GlobalScope.launch(Dispatchers.Main) {
                 if (beatValue == 1) {
                     // Add a point before the beat
                     heartRateEntries.add(Entry(dataIndex.toFloat(), 0f))
                     // Add the beat
                     heartRateEntries.add(Entry(dataIndex.toFloat(), 1f))
-
-                    // Update the chart immediately
                     updateChart()
-
-                    // Simulate a delay for the animation
-                    delay(200)
-
-                    // Add more points after the beat, moving back to baseline (0)
+                    delay(200) // Simulate a delay for the animation
+                    // Add more points after the beat
                     for (i in 1..10) {
                         heartRateEntries.add(Entry((dataIndex + i).toFloat(), 0f))
                         updateChart() // Update chart on each step
                         delay(10) // Adjust this delay for speed control
                     }
-
-                    // Increment dataIndex for the next beat, skipping some spaces
-                    dataIndex += 10
+                    dataIndex += 10 // Increment dataIndex for the next beat
                 } else {
-                    // Increment dataIndex even when no beat is detected
-                    dataIndex++
+                    dataIndex++ // Increment dataIndex even when no beat is detected
                 }
-
-                // Shift the chart's visible area to the latest data point
-                heartRateChart.moveViewToX(dataIndex.toFloat() - 100) // Keep 100 points visible and move the chart left
-
-                // Animate the removal of old data points
-                animateBeatRemoval()
-
+                heartRateChart.moveViewToX(dataIndex.toFloat() - 100) // Keep 100 points visible
+                animateBeatRemoval() // Animate removal of old data points
                 isUpdating = false // Reset updating state
             }
         }
     }
 
     private fun animateBeatRemoval() {
-        // Ensure this runs only if we have entries to remove
         if (heartRateEntries.size > 100) { // Only remove if more than 100 points exist
             GlobalScope.launch(Dispatchers.Main) {
-                // Loop to remove the oldest beat gradually (smooth transition)
                 for (i in 0 until 30) { // Adjust 5 to control how many steps the animation takes
                     if (heartRateEntries.isNotEmpty()) {
-                        heartRateEntries.removeAt(0) // Remove the oldest entry (leftmost)
+                        heartRateEntries.removeAt(0) // Remove the oldest entry
                         updateChart() // Refresh chart after each removal
-
                         delay(100) // Adjust the delay for smoother or faster animation
                     }
                 }
@@ -204,32 +179,20 @@ class WebsocketImplementation : AppCompatActivity() {
                 setDrawValues(false) // Disable numbers on the data points
             }
 
-            // Remove description and legend
-            heartRateChart.description.isEnabled = false
-            heartRateChart.legend.isEnabled = false
-
-            // Set the updated data to the chart
             heartRateChart.data = LineData(heartRateDataSet)
             heartRateChart.invalidate() // Refresh the chart
         }
     }
 
-
     private fun updateBpmAndSpo2(avgBpm: Int?, avgSpo2: Int?) {
-        // Update the BPM and SpO2 text views if final output is provided
-        avgBpm?.let {
-            bpmTextView.text = it.toString()
-        }
-
-        avgSpo2?.let {
-            spo2TextView.text = it.toString()
+        runOnUiThread { // Ensure UI updates are on the main thread
+            bpmTextView.text = avgBpm?.toString() ?: "N/A"
+            spo2TextView.text = avgSpo2?.toString() ?: "N/A"
         }
     }
 
     private fun setupSpo2Chart() {
-        // Add an initial entry with a value of 0
         spo2Entries.add(Entry(0f, 0f)) // Initialize chart with a 0 value
-
         val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
             color = Color.BLUE
             lineWidth = 2f
@@ -240,42 +203,24 @@ class WebsocketImplementation : AppCompatActivity() {
         spo2Chart.data = LineData(spo2DataSet)
         spo2Chart.setBackgroundColor(Color.WHITE)
         spo2Chart.setNoDataText("No SpO2 data yet")
-
-        // Remove description and legend
         spo2Chart.description.isEnabled = false
         spo2Chart.legend.isEnabled = false
-
-        spo2Chart.invalidate()
+        spo2Chart.invalidate() // Refresh the chart initially
     }
 
-
-
     private fun updateSpo2Chart(spo2Value: Int) {
-        // Add new data entry to SpO2 dataset
-        spo2Entries.add(Entry(spo2Index.toFloat(), spo2Value.toFloat()))
-        spo2Index++
-
-        // Make sure the chart is set with the correct dataset
+        if (spo2Index > 100) {
+            spo2Entries.removeAt(0) // Remove the oldest value if we have more than 100
+        }
+        spo2Entries.add(Entry(spo2Index++.toFloat(), spo2Value.toFloat()))
         val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
             color = Color.BLUE
             lineWidth = 2f
             setDrawCircles(false)
-            setDrawFilled(false)
+            setDrawValues(false) // Disable numbers on the data points
         }
 
-        // Update the dataset and chart
         spo2Chart.data = LineData(spo2DataSet)
-        spo2Chart.data.notifyDataChanged()
-        spo2Chart.notifyDataSetChanged()
-        spo2Chart.invalidate()
-
-        // Scroll the chart to the latest data point
-        spo2Chart.moveViewToX(spo2Index.toFloat() - 100)
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        webSocket.close(1000, null) // Close the WebSocket connection when activity is destroyed
+        spo2Chart.invalidate() // Refresh the chart with new data
     }
 }
