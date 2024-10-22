@@ -7,32 +7,32 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home_ic"
-            android:title="@string/Home" />
+            android:title="@string/inicio" />
 
         <item
             android:id="@+id/patients_view"
             android:icon="@drawable/patients_ic"
-            android:title="@string/patients" />
+            android:title="@string/pacientes" />
 
         <item
             android:id="@+id/weekly_analysis"
             android:icon="@drawable/calendar_month_ic"
-            android:title="@string/weekly_analisys" />
+            android:title="@string/analisis_semanal" />
 
         <item
             android:id="@+id/check_now"
             android:icon="@drawable/pulse_ic"
-            android:title="@string/check_now" />
+            android:title="@string/checar_ahora" />
 
         <item
             android:id="@+id/history"
             android:icon="@drawable/history_ic"
-            android:title="@string/history" />
+            android:title="@string/historial_de_salud_y_actividad" />
 
         <item
             android:id="@+id/device_status"
             android:icon="@drawable/devices_ic"
-            android:title="@string/device_status" />
+            android:title="@string/estado_del_dispositivo" />
 
     </group>
     <item android:title="">
@@ -40,7 +40,7 @@
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/log_out_ic"
-                android:title="@string/logout" />
+                android:title="Salir de la cuenta" />
         </menu>
     </item>
 </menu>

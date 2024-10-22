@@ -23,12 +23,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="@string/hello_samuel"
-            android:textColor="@color/Secondary_Darker"
+            android:text="Hola,"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:fontFamily="@font/montserrat_bold"
             app:layout_constraintBottom_toTopOf="@id/Patients"
             tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/samuel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Samuel"
+            android:textColor="@color/verdoso2"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintBottom_toTopOf="@id/Patients"
+            app:layout_constraintStart_toEndOf="@id/hello"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/Patients"
@@ -37,7 +50,7 @@
             android:layout_marginTop="170dp"
             android:background="@drawable/shadow"
             app:cardElevation="7dp"
-            app:cardBackgroundColor="@color/morao"
+            app:cardBackgroundColor="#B0EBEA"
             app:cardCornerRadius="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -53,7 +66,7 @@
                 android:text="@string/consultarP"
                 android:textSize="13sp"
                 android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/Secondary_Light" />
+                android:textColor="@color/white" />
 
             <ImageView
                 android:layout_width="15dp"
@@ -64,23 +77,20 @@
                 app:tint="@color/Primary_Dark"
                 tools:ignore="ContentDescription" />
 
-            <!-- Icono de usuario dentro de la tarjeta -->
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/usuarios"
                 android:layout_gravity="center"
                 android:layout_marginEnd="100dp"
-                app:tint="@color/iconuser"
                 tools:ignore="ContentDescription" />
         </androidx.cardview.widget.CardView>
 
-        <!-- Tarjeta de análisis semanal -->
         <androidx.cardview.widget.CardView
             android:id="@+id/analisis"
             android:layout_width="160dp"
             android:layout_height="150dp"
-            app:cardBackgroundColor="@color/celestee"
+            app:cardBackgroundColor="#D3E2FB"
             app:cardCornerRadius="16dp"
             android:background="@drawable/shadow"
             app:cardElevation="7dp"
@@ -125,8 +135,9 @@
             android:layout_width="160dp"
             android:layout_height="150dp"
             android:layout_marginTop="70dp"
-            app:cardBackgroundColor="@color/verde"
+            app:cardBackgroundColor="#F9F8E6"
             app:cardCornerRadius="16dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/shadow"
             app:cardElevation="7dp"

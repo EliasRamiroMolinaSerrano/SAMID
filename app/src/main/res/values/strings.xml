@@ -131,5 +131,15 @@
     <string name="configurar_alarmas">Configurar alarmas</string>
     <string name="background">background</string>
     <string name="no_tienes_una_cuenta">No tienes una cuenta?</string>
+    <string name="inicio">Inicio</string>
+    <string name="pacientes">Pacientes</string>
+    <string name="analisis_semanal">Analisis semanal</string>
+    <string name="checar_ahora">Checar ahora</string>
+    <string name="historial_de_salud_y_actividad">Historial de salud y actividad</string>
+    <string name="estado_del_dispositivo">Estado del dispositivo</string>
+    <string name="cuidador">Cuidador</string>
+    <string name="has_tenido_dificultades_con_el_dispositivo">Has tenido dificultades con el dispositivo?</string>
+    <string name="_11_02_24">11/02/24</string>
+    <string name="_12_12_23">12/12/23</string>
     Layout_Header
 </resources>

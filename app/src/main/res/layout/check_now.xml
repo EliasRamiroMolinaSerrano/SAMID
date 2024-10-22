@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/paciente"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@color/Secondary_Normal"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_semi_bold"/>
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manuel"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@color/Secondary_Normal"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     android:textSize="18sp"
                     android:fontFamily="@font/montserrat_semi_bold"/>
@@ -186,7 +186,7 @@
                 android:elevation="11dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
-                app:tint="@color/moradoFuerte" />
+                app:tint="@color/verdoso" />
 
             <ImageView
                 android:id="@+id/location"
@@ -216,7 +216,7 @@
             android:layout_height="wrap_content"
             android:text="@string/encuentra_a_tu_paciente"
             android:elevation="14dp"
-            android:textColor="@color/azulfuerte"
+            android:textColor="@color/black"
             android:layout_marginTop="30dp"
             android:layout_marginStart="15dp"
             android:layout_weight="1"
@@ -275,7 +275,7 @@
                 android:elevation="11dp"
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
-                app:tint="@color/moradoFuerte" />
+                app:tint="@color/verdoso" />
 
             <ImageView
                 android:id="@+id/reloj"
@@ -303,7 +303,7 @@
             android:layout_height="wrap_content"
             android:text="@string/configurar_alarmas"
             android:elevation="14dp"
-            android:textColor="@color/azulfuerte"
+            android:textColor="@color/black"
             android:layout_marginTop="30dp"
             android:layout_marginStart="15dp"
             android:layout_weight="1"
