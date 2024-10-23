@@ -48,7 +48,6 @@ class PatientsView : AppCompatActivity() {
                     true
                 }
                 R.id.patients_view -> {
-
                     true
                 }
                 R.id.weekly_analysis -> {
@@ -57,7 +56,7 @@ class PatientsView : AppCompatActivity() {
                     true
                 }
                 R.id.check_now -> {
-                    val intent = Intent(this, CheckNow::class.java) // Navegar a CheckNow
+                    val intent = Intent(this, CheckNow::class.java)
                     startActivity(intent)
                     true
                 }
@@ -82,6 +81,12 @@ class PatientsView : AppCompatActivity() {
         // Configura el listener para el CardView
         findViewById<CardView>(R.id.cardPatients).setOnClickListener {
             val intent = Intent(this, CheckNow::class.java) // Cambia a la actividad CheckNow
+            startActivity(intent) // Inicia la actividad
+        }
+
+        // Configura el listener para el botón addButton
+        findViewById<ImageView>(R.id.addButton).setOnClickListener {
+            val intent = Intent(this, RegisterPatient::class.java) // Cambia a la actividad RegisterPatient
             startActivity(intent) // Inicia la actividad
         }
     }

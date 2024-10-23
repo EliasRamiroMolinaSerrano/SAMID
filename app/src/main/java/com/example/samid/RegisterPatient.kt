@@ -1,7 +1,9 @@
 package com.example.samid
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class RegisterPatient : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,7 +28,7 @@ class RegisterPatient : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.spinnerCondition)
 
         // Lista de opciones
-        val options = arrayOf("Stable", "Critical")
+        val options = arrayOf("Alzheimer", "Parkinson")
 
         // Adaptador para el Spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
@@ -33,5 +36,14 @@ class RegisterPatient : AppCompatActivity() {
 
         // Asignar el adaptador al Spinner
         spinner.adapter = adapter
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
+
+
+
     }
 }
