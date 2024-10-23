@@ -121,6 +121,8 @@ class WebsocketImplementation : AppCompatActivity() {
         heartRateChart.description.isEnabled = false // Disable description
         heartRateChart.axisLeft.setDrawLabels(false) // Disable Y-axis labels
         heartRateChart.xAxis.setDrawLabels(false) // Disable X-axis labels
+
+        // Set the visible X range, e.g., display the last 100 data points
         heartRateChart.setVisibleXRangeMaximum(100f) // Show 100 points at a time
         heartRateChart.setVisibleXRangeMinimum(100f) // Fix the window to 100 points
         heartRateChart.moveViewToX(0f) // Start at the beginning of the chart
@@ -129,38 +131,55 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun updateHeartRateChart(beatValue: Int) {
         if (!isUpdating) { // Avoid overlapping updates
             isUpdating = true
+
             GlobalScope.launch(Dispatchers.Main) {
                 if (beatValue == 1) {
                     // Add a point before the beat
                     heartRateEntries.add(Entry(dataIndex.toFloat(), 0f))
                     // Add the beat
                     heartRateEntries.add(Entry(dataIndex.toFloat(), 1f))
+
+                    // Update the chart immediately
                     updateChart()
-                    delay(200) // Simulate a delay for the animation
-                    // Add more points after the beat
+
+                    // Simulate a delay for the animation
+                    delay(200)
+
+                    // Add more points after the beat, moving back to baseline (0)
                     for (i in 1..10) {
                         heartRateEntries.add(Entry((dataIndex + i).toFloat(), 0f))
                         updateChart() // Update chart on each step
                         delay(10) // Adjust this delay for speed control
                     }
-                    dataIndex += 10 // Increment dataIndex for the next beat
+
+                    // Increment dataIndex for the next beat, skipping some spaces
+                    dataIndex += 10
                 } else {
-                    dataIndex++ // Increment dataIndex even when no beat is detected
+                    // Increment dataIndex even when no beat is detected
+                    dataIndex++
                 }
-                heartRateChart.moveViewToX(dataIndex.toFloat() - 100) // Keep 100 points visible
-                animateBeatRemoval() // Animate removal of old data points
+
+                // Shift the chart's visible area to the latest data point
+                heartRateChart.moveViewToX(dataIndex.toFloat() - 100) // Keep 100 points visible and move the chart left
+
+                // Animate the removal of old data points
+                animateBeatRemoval()
+
                 isUpdating = false // Reset updating state
             }
         }
     }
 
     private fun animateBeatRemoval() {
+        // Ensure this runs only if we have entries to remove
         if (heartRateEntries.size > 100) { // Only remove if more than 100 points exist
             GlobalScope.launch(Dispatchers.Main) {
+                // Loop to remove the oldest beat gradually (smooth transition)
                 for (i in 0 until 30) { // Adjust 5 to control how many steps the animation takes
                     if (heartRateEntries.isNotEmpty()) {
-                        heartRateEntries.removeAt(0) // Remove the oldest entry
+                        heartRateEntries.removeAt(0) // Remove the oldest entry (leftmost)
                         updateChart() // Refresh chart after each removal
+
                         delay(100) // Adjust the delay for smoother or faster animation
                     }
                 }
@@ -179,10 +198,16 @@ class WebsocketImplementation : AppCompatActivity() {
                 setDrawValues(false) // Disable numbers on the data points
             }
 
+            // Remove description and legend
+            heartRateChart.description.isEnabled = false
+            heartRateChart.legend.isEnabled = false
+
+            // Set the updated data to the chart
             heartRateChart.data = LineData(heartRateDataSet)
             heartRateChart.invalidate() // Refresh the chart
         }
     }
+
 
     private fun updateBpmAndSpo2(avgBpm: Int?, avgSpo2: Int?) {
         runOnUiThread { // Ensure UI updates are on the main thread
@@ -192,7 +217,9 @@ class WebsocketImplementation : AppCompatActivity() {
     }
 
     private fun setupSpo2Chart() {
+        // Add an initial entry with a value of 0
         spo2Entries.add(Entry(0f, 0f)) // Initialize chart with a 0 value
+
         val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
             color = Color.BLUE
             lineWidth = 2f
@@ -203,10 +230,15 @@ class WebsocketImplementation : AppCompatActivity() {
         spo2Chart.data = LineData(spo2DataSet)
         spo2Chart.setBackgroundColor(Color.WHITE)
         spo2Chart.setNoDataText("No SpO2 data yet")
+
+        // Remove description and legend
         spo2Chart.description.isEnabled = false
         spo2Chart.legend.isEnabled = false
-        spo2Chart.invalidate() // Refresh the chart initially
+
+        spo2Chart.invalidate()
     }
+
+
 
     private fun updateSpo2Chart(spo2Value: Int) {
         if (spo2Index > 100) {
@@ -217,10 +249,22 @@ class WebsocketImplementation : AppCompatActivity() {
             color = Color.BLUE
             lineWidth = 2f
             setDrawCircles(false)
-            setDrawValues(false) // Disable numbers on the data points
+            setDrawFilled(false)
         }
 
+        // Update the dataset and chart
         spo2Chart.data = LineData(spo2DataSet)
-        spo2Chart.invalidate() // Refresh the chart with new data
+        spo2Chart.data.notifyDataChanged()
+        spo2Chart.notifyDataSetChanged()
+        spo2Chart.invalidate()
+
+        // Scroll the chart to the latest data point
+        spo2Chart.moveViewToX(spo2Index.toFloat() - 100)
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        webSocket.close(1000, null) // Close the WebSocket connection when activity is destroyed
     }
 }

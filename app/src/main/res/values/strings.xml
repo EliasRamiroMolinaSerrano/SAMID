@@ -146,5 +146,7 @@
     <string name="ubicaciones_guardadas">Ubicaciones Guardadas</string>
     <string name="ubicaci_n">Ubicación:</string>
     <string name="hora">Hora:</string>
+    <string name="fall_detected">Fall Detected</string>
+    <string name="just_now">Just Now</string>
     Layout_Header
 </resources>
