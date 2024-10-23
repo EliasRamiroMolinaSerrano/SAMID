@@ -13,28 +13,38 @@ import okhttp3.WebSocketListener
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.Calendar
 import java.util.Locale
+import android.os.AsyncTask
+import okhttp3.Response
+import org.json.JSONArray
 
 class HistoryActivityFalls : AppCompatActivity() {
 
     private lateinit var cardContainer: LinearLayout  // Container for dynamically created cards
+    private lateinit var webSocket: WebSocket  // WebSocket variable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_falls)
 
         // Set up the back button
-        val backButton = findViewById<ImageView>(R.id.flecha) // Replace with the actual ID of your back button
+        val backButton = findViewById<ImageView>(R.id.flecha)
         backButton.setOnClickListener {
             finish() // This will finish the current activity and go back to the previous one
         }
 
         // Initialize card container
-        cardContainer = findViewById(R.id.cardContainer) // Ensure you have a LinearLayout in your XML for cards
+        cardContainer = findViewById(R.id.cardContainer)
+
+        fetchFallRecords()
 
         // Set up WebSocket listener
         val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("ws://192.168.0.115:8081") // Ensure this URL is correct
+            .build()
+
         val webSocketListener = object : WebSocketListener() {
             override fun onMessage(webSocket: WebSocket, text: String) {
                 Log.d("WebSocket", "Received message: $text")
@@ -43,14 +53,11 @@ class HistoryActivityFalls : AppCompatActivity() {
                     if (jsonObject.has("fall")) {
                         runOnUiThread { addFallCard() } // Update UI on the main thread
                     }
-                    // Handle other messages similarly
                 } catch (e: JSONException) {
                     Log.e("WebSocket", "Error parsing message: ${e.message}")
                 }
             }
 
-
-            // Implement other WebSocket callbacks if necessary
             override fun onOpen(webSocket: WebSocket, response: okhttp3.Response) {
                 Log.d("WebSocket", "Connection opened")
             }
@@ -68,11 +75,42 @@ class HistoryActivityFalls : AppCompatActivity() {
                 Log.d("WebSocket", "Connection closed: $reason")
             }
         }
+
+        // Create the WebSocket connection
+        webSocket = client.newWebSocket(request, webSocketListener)
+    }
+
+    private fun fetchFallRecords() {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("http://192.168.0.115:8081/get_falls") // Ensure this URL matches your server's endpoint
+            .build()
+
+        // Use AsyncTask to fetch data on a background thread
+        AsyncTask.execute {
+            try {
+                val response: Response = client.newCall(request).execute()
+                val jsonResponse = response.body?.string()
+
+                if (jsonResponse != null) {
+                    val jsonArray = JSONArray(jsonResponse)
+                    for (i in 0 until jsonArray.length()) {
+                        val fallRecord = jsonArray.getJSONObject(i)
+                        runOnUiThread {
+                            // Add a card for each fall record
+                            addFallCard()
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("HistoryActivityFalls", "Error fetching fall records: ${e.message}")
+            }
+        }
     }
 
     private fun addFallCard() {
         // Inflate the card layout
-        val cardView = layoutInflater.inflate(R.layout.card_fall, null) // Inflate card_fall.xml
+        val cardView = layoutInflater.inflate(R.layout.card_fall, null)
 
         // Find views in the card layout
         val nameTextView = cardView.findViewById<TextView>(R.id.name)
@@ -80,7 +118,17 @@ class HistoryActivityFalls : AppCompatActivity() {
 
         // Set the data for the new card
         nameTextView.text = "Fall Detected"
-        timeTextView.text = getCurrentTime() // Implement this function to get the current time as needed
+        timeTextView.text = getCurrentTime() // Call your function to get the current time
+
+        // Create layout params for the card
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
+        // Set top margin
+        layoutParams.setMargins(0, 20, 0, 0)
+        cardView.layoutParams = layoutParams
 
         // Add the card to the container
         cardContainer.addView(cardView)
@@ -89,9 +137,13 @@ class HistoryActivityFalls : AppCompatActivity() {
     // Function to get the current time
     private fun getCurrentTime(): String {
         // You can customize this method to return a formatted time string
-        val currentTime = System.currentTimeMillis()
-        val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
-        return dateFormat.format(Date(currentTime))
+        val currentDate = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
+        return dateFormat.format(currentDate)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        webSocket.close(1000, null) // Close the WebSocket connection when activity is destroyed
+    }
 }
