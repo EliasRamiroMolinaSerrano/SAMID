@@ -10,7 +10,7 @@
         android:id="@+id/title_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/t_tulo_superior"
+        android:text="Título Superior"
         android:textSize="24sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/save_location_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/guardar_ubicaci_n"
+        android:text="Guardar Ubicación"
         app:layout_constraintTop_toBottomOf="@id/map"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         android:id="@+id/title_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ubicaciones_guardadas"
+        android:text="Ubicaciones Guardadas"
         android:textSize="20sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/save_location_button"
@@ -72,9 +72,8 @@
                 android:id="@+id/name1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/manuel"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -82,9 +81,8 @@
                 android:id="@+id/location1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/ubicaci_n"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -92,11 +90,11 @@
                 android:id="@+id/time1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/hora"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -124,9 +122,8 @@
                 android:id="@+id/name2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/manuel"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -134,9 +131,8 @@
                 android:id="@+id/location2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/ubicaci_n"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -144,9 +140,8 @@
                 android:id="@+id/time2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/hora"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -176,9 +171,8 @@
                 android:id="@+id/name3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/manuel"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -186,9 +180,8 @@
                 android:id="@+id/location3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/ubicaci_n"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
 
@@ -196,9 +189,8 @@
                 android:id="@+id/time3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/hora"
                 android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_weight="1"/>
         </LinearLayout>

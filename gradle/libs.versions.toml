@@ -17,6 +17,7 @@ constraintlayout = "2.1.4"
 materialVersion = "1.12.0"
 mpandroidchart = "v3.1.0"
 playServicesMaps = "19.0.0"
+cardview = "1.0.0"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
@@ -47,6 +48,7 @@ material-v1100 = { module = "com.google.android.material:material", version.ref 
 material-v121 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

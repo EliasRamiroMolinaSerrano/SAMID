@@ -48,10 +48,12 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.androidx.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     implementation ("org.osmdroid:osmdroid-android:6.1.12") //test
-    implementation ("com.google.android.gms:play-services-location:18.0.0") //test
+    implementation ("com.google.android.gms:play-services-location:21.3.0") //test
+
 
 
     androidTestImplementation(libs.androidx.espresso.core)
