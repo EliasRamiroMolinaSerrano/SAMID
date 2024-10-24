@@ -1,6 +1,8 @@
 package com.example.samid
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
@@ -20,6 +22,12 @@ class WebsocketImplementation : AppCompatActivity() {
         spo2TextView = findViewById(R.id.spo2TextView)
 
         setupWebSocket()
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
     }
 
     private fun setupWebSocket() {

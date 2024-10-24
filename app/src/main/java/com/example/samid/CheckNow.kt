@@ -2,6 +2,7 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.samid.databinding.CheckNowBinding
 
@@ -28,5 +29,12 @@ class CheckNow : AppCompatActivity() {
             val intent = Intent(this, AlarmsViewActivity::class.java)
             startActivity(intent)
         }
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha)
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
+
     }
 }

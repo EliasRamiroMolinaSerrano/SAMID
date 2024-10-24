@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/go_back_header" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/paciente_manuel"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="20sp"
+        android:layout_marginTop="110dp"
+        android:textColorHint="@color/Secondary_Darker"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pulso_y_oxigeno_monitor"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/Secondary_Darker"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:background="@drawable/shadow"
+        app:cardBackgroundColor="@color/Primary_Light"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/pulse"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/circulo"
+        android:src="@drawable/circle_test"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/card"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintBottom_toBottomOf="@id/card"
+        android:elevation="6dp"/>
+
+    <ImageView
+        android:id="@+id/oxigen"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/circle_test"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/circulo"
+        app:layout_constraintTop_toTopOf="@id/card"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        app:layout_constraintBottom_toBottomOf="@id/card"
+        android:elevation="6dp"/>
+
+    <ImageView
+        android:id="@+id/information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/info_ic"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/contact_info"
+        app:layout_constraintTop_toTopOf="@id/card"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        android:elevation="6dp"/>
+
+    <ImageView
+        android:id="@+id/heart"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/heart_rate_ic"
+        app:layout_constraintTop_toTopOf="@id/pulse"
+        app:layout_constraintEnd_toEndOf="@id/pulse"
+        app:layout_constraintStart_toStartOf="@id/pulse"
+        app:layout_constraintBottom_toBottomOf="@id/pulse"
+        android:contentDescription="@string/icon"
+        android:layout_marginBottom="70dp"
+        android:elevation="6dp"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_90"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="50sp"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/Secondary_Darker"
+        app:layout_constraintTop_toTopOf="@id/pulse"
+        app:layout_constraintEnd_toEndOf="@id/pulse"
+        app:layout_constraintStart_toStartOf="@id/pulse"
+        app:layout_constraintBottom_toBottomOf="@id/pulse"
+        android:elevation="6dp"/>
+
+    <ImageView
+        android:id="@+id/sp02"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/oxigen_ic"
+        app:layout_constraintTop_toTopOf="@id/oxigen"
+        app:layout_constraintEnd_toEndOf="@id/oxigen"
+        app:layout_constraintStart_toStartOf="@id/oxigen"
+        app:layout_constraintBottom_toBottomOf="@id/oxigen"
+        android:contentDescription="@string/icon"
+        android:layout_marginBottom="70dp"
+        android:elevation="6dp"/>
+
+    <TextView
+        android:id="@+id/result_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_90"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="50sp"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/Secondary_Darker"
+        app:layout_constraintTop_toTopOf="@id/oxigen"
+        app:layout_constraintEnd_toEndOf="@id/oxigen"
+        app:layout_constraintStart_toStartOf="@id/oxigen"
+        app:layout_constraintBottom_toBottomOf="@id/oxigen"
+        android:elevation="6dp"/>
+
+    <TextView
+        android:id="@+id/tittle_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/historial_semanal"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/Secondary_Darker"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
