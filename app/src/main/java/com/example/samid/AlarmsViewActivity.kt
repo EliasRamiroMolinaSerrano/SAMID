@@ -24,6 +24,7 @@ class AlarmsViewActivity : AppCompatActivity() {
         val nombrePaciente = intent.getStringExtra("nombrePaciente")
         val nombreAlarma = intent.getStringExtra("nombreAlarma")
         val descripcion = intent.getStringExtra("descripcion")
+        val Hora = intent.getStringExtra("HoraSeleccionada")  // Clave correcta para la hora seleccionada
 
         // Verificar si hay datos para mostrar
         if (nombrePaciente.isNullOrEmpty() || nombreAlarma.isNullOrEmpty() || descripcion.isNullOrEmpty()) {
@@ -36,6 +37,7 @@ class AlarmsViewActivity : AppCompatActivity() {
             binding.nombrePaciente.text = nombrePaciente
             binding.nombreAlarma.text = nombreAlarma
             binding.descripcionAlarma.text = descripcion
+            binding.Hora.text = Hora  // Mostrar la hora seleccionada
         }
 
         // Configurar el botón de agregar alarma

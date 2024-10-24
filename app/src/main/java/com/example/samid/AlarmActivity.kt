@@ -11,6 +11,7 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -40,9 +41,10 @@ class AlarmActivity : AppCompatActivity() {
 
         // Configurar el botón de agregar alarma
         binding.setAlarmBtn.setOnClickListener {
-            val nombrePaciente = findViewById<EditText>(R.id.nombrePaciente).text.toString()
-            val descripcion = findViewById<EditText>(R.id.descripcionAlarma).text.toString()
-            val nombreAlarma = findViewById<EditText>(R.id.nombreAlarma).text.toString()
+            val HoraSeleccionada = binding.selectedTime.text.toString() // Obtener la hora seleccionada desde el binding
+            val nombrePaciente = binding.nombrePaciente?.text.toString() // Cambia aquí para usar el binding
+            val descripcion = binding.descripcionAlarma.text.toString() // Cambia aquí para usar el binding
+            val nombreAlarma = binding.nombreAlarma.text.toString() // Cambia aquí para usar el binding
 
             // Llamar a la función que configura la alarma
             setAlarm()
@@ -52,12 +54,14 @@ class AlarmActivity : AppCompatActivity() {
 
             // Pasar los datos a AlarmsViewActivity
             intent.putExtra("nombrePaciente", nombrePaciente)
-            intent.putExtra("nombreAlarma", nombreAlarma)  // Asegúrate de usar la clave correcta
+            intent.putExtra("nombreAlarma", nombreAlarma)
             intent.putExtra("descripcion", descripcion)
+            intent.putExtra("HoraSeleccionada", HoraSeleccionada) // Asegúrate de que esta clave sea la misma
 
             // Iniciar AlarmsViewActivity
             startActivity(intent)
         }
+
 
         // Configurar el botón de retroceso
         val backButton = findViewById<ImageView>(R.id.flecha) // Reemplaza con el ID real de tu botón de retroceso
