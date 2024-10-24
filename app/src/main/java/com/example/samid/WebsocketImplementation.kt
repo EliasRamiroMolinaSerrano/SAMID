@@ -55,7 +55,7 @@ class WebsocketImplementation : AppCompatActivity() {
     private fun setupWebSocket() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("ws://192.168.0.115:8081") // Update this URL if needed
+            .url("ws://192.168.0.116:8081") // Update this URL if needed
             .build()
 
         val webSocketListener = object : WebSocketListener() {
