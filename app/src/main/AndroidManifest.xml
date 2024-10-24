@@ -71,8 +71,8 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-        android:name="com.example.samid.WebsocketImplementation"
-        android:exported="false" />
+            android:name="com.example.samid.WebsocketImplementation"
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
