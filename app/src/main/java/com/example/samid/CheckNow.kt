@@ -35,6 +35,12 @@ class CheckNow : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Set a click listener on 'card3' to navigate to AlarmsViewActivity
+        binding.card2.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
+            startActivity(intent)
+        }
+
         // Set up the back button
         val backButton = findViewById<ImageView>(R.id.flecha)
         backButton.setOnClickListener {

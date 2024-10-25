@@ -81,7 +81,7 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
-                    android:id="@+id/item4"
+                    android:id="@+id/LPM"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_44"
@@ -100,7 +100,7 @@
                     android:text="@string/lpm" />
 
                 <TextView
-                    android:id="@+id/item6"
+                    android:id="@+id/Spo2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/_48"

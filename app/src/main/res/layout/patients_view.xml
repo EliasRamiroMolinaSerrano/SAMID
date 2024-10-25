@@ -30,7 +30,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="100dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/patients"
+            android:text="Pacientes"
             android:textColor="@color/Primary_Dark"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
-                        android:text="@string/patient_name"
+                        android:text="@string/manuel"
                         android:textColor="@color/Primary_Dark"
                         android:textSize="18sp" />
 
@@ -98,7 +98,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="5dp"
-                        android:text="@string/desease"
+                        android:text="Diabetes"
                         android:textColor="@color/Primary_Dark"
                         android:textSize="18sp" />
 
@@ -134,84 +134,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Second CardView for a patient -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/secondCardPatients"
-            android:layout_width="350dp"
-            android:layout_height="150dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/shadow"
-            app:cardBackgroundColor="@color/Primary_Light"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="7dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardPatients">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:contentDescription="@string/card_description"
-                        android:src="@drawable/pulsera" />
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="25dp"
-                        android:contentDescription="@string/batteryicon"
-                        android:src="@drawable/battery_svg" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:text="@string/patient_name"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/status"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="48dp"
-                    android:text="@string/patient_id"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -235,7 +157,8 @@
             android:src="@drawable/add_circle_ic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/secondCardPatients"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp"
             app:tint="@color/Primary_Buttoms" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

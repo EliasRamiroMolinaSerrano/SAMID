@@ -12,6 +12,7 @@ import android.location.Location
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -55,6 +56,12 @@ class MapActivity : AppCompatActivity() {
 
         // Actualizar las tarjetas inmediatamente después de cargar ubicaciones
         updateCardViews()
+
+        // Set up the back button
+        val backButton = findViewById<ImageView>(R.id.flecha)
+        backButton.setOnClickListener {
+            finish() // This will finish the current activity and go back to the previous one
+        }
 
         // Configurar el mapa
         mapView.setTileSource(TileSourceFactory.MAPNIK)
