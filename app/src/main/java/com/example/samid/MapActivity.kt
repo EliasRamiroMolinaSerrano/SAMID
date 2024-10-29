@@ -1,7 +1,6 @@
 @file:Suppress("DEPRECATION")
 
 package com.example.samid
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
@@ -138,18 +137,31 @@ class MapActivity : AppCompatActivity() {
 
     @SuppressLint("DiscouragedApi", "SetTextI18n")
     private fun updateCardViews() {
+        // Limpiar todos los TextViews antes de actualizarlos
+        for (i in 1..maxLocations) {
+            val nameTextView = findViewById<TextView>(resources.getIdentifier("name$i", "id", packageName))
+            val locationTextView = findViewById<TextView>(resources.getIdentifier("location$i", "id", packageName))
+            val timeTextView = findViewById<TextView>(resources.getIdentifier("time$i", "id", packageName))
+
+            nameTextView?.text = ""
+            locationTextView?.text = ""
+            timeTextView?.text = ""
+        }
+
+        // Actualizar la información de la tarjeta de arriba hacia abajo
         for (i in locations.indices) {
-            // Obtener los identificadores de los TextViews correspondientes a cada tarjeta
+            val index = locations.size - 1 - i // Obtener el índice inverso
             val nameTextView = findViewById<TextView>(resources.getIdentifier("name${i + 1}", "id", packageName))
             val locationTextView = findViewById<TextView>(resources.getIdentifier("location${i + 1}", "id", packageName))
             val timeTextView = findViewById<TextView>(resources.getIdentifier("time${i + 1}", "id", packageName))
 
             // Actualizar la información de la tarjeta
             nameTextView?.text = "Manuel" // Cambiar a "Manuel"
-            locationTextView?.text = locationNames[i] // Mostrar dirección
-            timeTextView?.text = timestamps[i] // Mostrar la fecha y hora en el nuevo formato
+            locationTextView?.text = locationNames[index] // Mostrar dirección
+            timeTextView?.text = timestamps[index] // Mostrar la fecha y hora en el nuevo formato
         }
     }
+
 
     private fun getAddressFromLocation(location: GeoPoint): String {
         val geocoder = Geocoder(this, Locale.getDefault())

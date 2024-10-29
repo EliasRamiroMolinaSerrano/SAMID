@@ -1,5 +1,6 @@
 package com.example.samid
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,8 @@ class WebsocketImplementation : AppCompatActivity() {
     private val heartRateEntries = mutableListOf<Entry>()
     private var dataIndex = 0
     private var isUpdating = false // To avoid overlapping updates
+    private lateinit var sharedPreferences: SharedPreferences
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,8 @@ class WebsocketImplementation : AppCompatActivity() {
         heartRateChart = findViewById(R.id.heartRateChartView)
         bpmTextView = findViewById(R.id.bpmTextView)
         spo2TextView = findViewById(R.id.spo2TextView)
+        sharedPreferences = getSharedPreferences("HealthData", MODE_PRIVATE)
+
 
         setupCharts()
         setupWebSocket()
@@ -110,6 +115,14 @@ class WebsocketImplementation : AppCompatActivity() {
         Log.d("WebSocket", "Attempting to connect...")
         webSocket = client.newWebSocket(request, webSocketListener)
     }
+
+    private fun saveHealthData(bpm: Int, spo2: Int) {
+        val editor = sharedPreferences.edit()
+        editor.putInt("last_bpm", bpm)
+        editor.putInt("last_spo2", spo2)
+        editor.apply()
+    }
+
 
     private fun setupCharts() {
         heartRateChart.axisRight.isEnabled = false // Disable the right Y-axis
@@ -208,11 +221,15 @@ class WebsocketImplementation : AppCompatActivity() {
         }
     }
 
-
     private fun updateBpmAndSpo2(avgBpm: Int?, avgSpo2: Int?) {
-        runOnUiThread { // Ensure UI updates are on the main thread
+        runOnUiThread {
             bpmTextView.text = avgBpm?.toString() ?: "N/A"
             spo2TextView.text = avgSpo2?.toString() ?: "N/A"
+
+            // Save the values to SharedPreferences
+            if (avgBpm != null && avgSpo2 != null) {
+                saveHealthData(avgBpm, avgSpo2)
+            }
         }
     }
 
