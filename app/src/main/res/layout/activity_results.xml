@@ -48,104 +48,119 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/indicatorsCardView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:cardCornerRadius="8dp"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/Primary_Light"
+            app:cardCornerRadius="20dp"
             app:cardElevation="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subtitleTextView">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <!-- Pulse ImageView and Heart Icon -->
+                <ImageView
+                    android:id="@+id/pulse"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/circulo"
+                    android:src="@drawable/circle_test"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:elevation="6dp" />
+
+                <ImageView
+                    android:id="@+id/heart"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/heart_rate_ic"
+                    android:layout_marginBottom="70dp"
+                    android:contentDescription="@string/icon"
+                    app:layout_constraintTop_toTopOf="@id/pulse"
+                    app:layout_constraintStart_toStartOf="@id/pulse"
+                    app:layout_constraintEnd_toEndOf="@id/pulse"
+                    app:layout_constraintBottom_toBottomOf="@id/pulse"
+                    android:elevation="6dp" />
+
+                <TextView
+                    android:id="@+id/bpmTextView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="30dp"
+                    android:text="--"
+                    android:textColorHint="@color/Secondary_Darker"
+                    android:textSize="50sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    app:layout_constraintTop_toTopOf="@id/pulse"
+                    app:layout_constraintStart_toStartOf="@id/pulse"
+                    app:layout_constraintEnd_toEndOf="@id/pulse"
+                    app:layout_constraintBottom_toBottomOf="@id/pulse"
+                    android:elevation="6dp" />
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/heart_rate_ic"
-                        app:tint="@android:color/holo_red_dark" />
+                <!-- Oxygen ImageView and SPO2 Icon -->
+                <ImageView
+                    android:id="@+id/oxigen"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/circulo"
+                    android:src="@drawable/circle_test"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:elevation="6dp" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="8dp"
-                        app:cardBackgroundColor="#FFEBEE"
-                        app:cardCornerRadius="50dp">
+                <ImageView
+                    android:id="@+id/sp02"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/oxigen_ic"
+                    android:layout_marginBottom="70dp"
+                    android:contentDescription="@string/icon"
+                    app:layout_constraintTop_toTopOf="@id/oxigen"
+                    app:layout_constraintStart_toStartOf="@id/oxigen"
+                    app:layout_constraintEnd_toEndOf="@id/oxigen"
+                    app:layout_constraintBottom_toBottomOf="@id/oxigen"
+                    android:elevation="6dp" />
 
-                        <TextView
-                            android:id="@+id/bpmTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="--"
-                            android:textColor="@android:color/holo_red_dark"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LPM"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/spo2TextView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="30dp"
+                    android:text="--%"
+                    android:textColorHint="@color/Secondary_Darker"
+                    android:textSize="50sp"
+                    android:fontFamily="@font/montserrat_regular"
+                    app:layout_constraintTop_toTopOf="@id/oxigen"
+                    app:layout_constraintStart_toStartOf="@id/oxigen"
+                    app:layout_constraintEnd_toEndOf="@id/oxigen"
+                    app:layout_constraintBottom_toBottomOf="@id/oxigen"
+                    android:elevation="6dp" />
 
-                    <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@drawable/oxigen_ic"
-                        app:tint="@android:color/holo_blue_dark" />
+                <!-- Information Icon -->
+                <ImageView
+                    android:id="@+id/information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/contact_info"
+                    android:src="@drawable/info_ic"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:elevation="6dp" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="8dp"
-                        app:cardBackgroundColor="#E3F2FD"
-                        app:cardCornerRadius="50dp">
-
-                        <TextView
-                            android:id="@+id/spo2TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="--%"
-                            android:textColor="@android:color/holo_blue_dark"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SPO2"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/chartsCardView"
