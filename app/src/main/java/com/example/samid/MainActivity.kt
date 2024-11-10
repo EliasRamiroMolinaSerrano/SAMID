@@ -1,10 +1,12 @@
 package com.example.samid
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
@@ -15,9 +17,10 @@ class MainActivity : ComponentActivity() {
     lateinit var usernameInput: EditText
     lateinit var passwordInput: EditText
     lateinit var loginBtn: Button
+    lateinit var registerBtn: TextView
 
 
-    @SuppressLint("CutPasteId")
+    @SuppressLint("CutPasteId", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,16 +29,21 @@ class MainActivity : ComponentActivity() {
         usernameInput = findViewById(R.id.username_input)
         passwordInput = findViewById(R.id.password_input)
         loginBtn = findViewById(R.id.login_btn)
+        registerBtn = findViewById(R.id.RegisterBtn)
 
+        // Log credentials when login button is clicked
         loginBtn.setOnClickListener {
             val username = usernameInput.text.toString()
             val password = passwordInput.text.toString()
             Log.i("TestCredentials", "Username: $username and Password: $password")
+
+            // Intent to navigate to the second activity
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
 
-        // Intent to navigate to the second activity
-        val secondActButton = findViewById<Button>(R.id.login_btn)
-        secondActButton.setOnClickListener {
+        // Navigate to registration activity when register button is clicked
+        registerBtn.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }

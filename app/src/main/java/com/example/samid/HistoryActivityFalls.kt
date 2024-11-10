@@ -42,7 +42,7 @@ class HistoryActivityFalls : AppCompatActivity() {
         // Set up WebSocket listener
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("ws://192.168.0.116:8081") // Ensure this URL is correct
+            .url("ws://192.168.0.115:8081") // Ensure this URL is correct
             .build()
 
         val webSocketListener = object : WebSocketListener() {
@@ -83,7 +83,7 @@ class HistoryActivityFalls : AppCompatActivity() {
     private fun fetchFallRecords() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://192.168.0.116:8081/get_falls") // Ensure this URL matches your server's endpoint
+            .url("http://192.168.0.115:8081/get_falls") // Ensure this URL matches your server's endpoint
             .build()
 
         // Use AsyncTask to fetch data on a background thread

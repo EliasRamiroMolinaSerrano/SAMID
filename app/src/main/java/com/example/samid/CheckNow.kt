@@ -51,7 +51,7 @@ class CheckNow : AppCompatActivity() {
 
     // Function to send request to the Raspberry Pi server
     private fun sendRequestToServer() {
-        val url = "http://192.168.0.116:8081/start-readings"
+        val url = "http://192.168.0.115:8081/start-readings"
 
         val request = Request.Builder()
             .url(url)

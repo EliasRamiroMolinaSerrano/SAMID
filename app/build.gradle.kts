@@ -47,6 +47,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // Conector para SqlServer
+    implementation(libs.sourceforge.jtds)
+    // libreria Pcs (utilidades)
+    implementation(libs.libreria.pcs)
+
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
     testImplementation(libs.junit)
