@@ -156,7 +156,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/nav_menu"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         app:headerLayout="@layout/nav_header"
         android:background="@color/white"
         app:itemIconTint="@color/black"
