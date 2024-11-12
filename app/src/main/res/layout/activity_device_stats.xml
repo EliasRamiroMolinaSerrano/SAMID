@@ -127,5 +127,5 @@
         app:itemTextColor="@color/Primary_Dark"
         app:menu="@menu/nav_menu"
         android:background="@color/white"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="40dp" />
 </androidx.drawerlayout.widget.DrawerLayout>

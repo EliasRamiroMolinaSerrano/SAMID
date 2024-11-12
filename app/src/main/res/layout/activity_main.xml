@@ -185,13 +185,13 @@
             android:contentDescription="@string/facebook_logo" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/montserrat"
             android:text="facebook"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:fontFamily="@font/montserrat"
-            android:layout_marginStart="8dp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <!-- Google button -->
@@ -227,7 +227,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/addaccount"
+        android:id="@+id/textdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/logo"
@@ -242,7 +242,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/addaccount2"
+        android:id="@+id/RegisterBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/logo"
@@ -253,7 +253,13 @@
         android:text="Registrate"
         android:layout_marginEnd="70dp"
         app:layout_constraintTop_toBottomOf="@id/google_btn"
-        app:layout_constraintStart_toEndOf="@id/addaccount"
+        app:layout_constraintStart_toEndOf="@id/textdown"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

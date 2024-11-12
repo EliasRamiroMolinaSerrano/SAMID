@@ -47,14 +47,14 @@
             android:id="@+id/Patients"
             android:layout_width="350dp"
             android:layout_height="150dp"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="168dp"
             android:background="@drawable/shadow"
-            app:cardElevation="7dp"
+            android:fontFamily="@font/montserrat"
             app:cardBackgroundColor="#B0EBEA"
             app:cardCornerRadius="16dp"
+            app:cardElevation="7dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:fontFamily="@font/montserrat">
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/pacientBtn"
@@ -63,26 +63,26 @@
                 android:layout_marginStart="135dp"
                 android:layout_marginTop="50dp"
                 android:backgroundTint="@color/Primary_Normal"
-                android:text="@string/consultarP"
-                android:textSize="13sp"
                 android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/white" />
+                android:text="@string/consultarP"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
 
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/arrow"
                 android:layout_marginStart="307dp"
                 android:layout_marginTop="63dp"
-                app:tint="@color/Primary_Dark"
+                android:src="@drawable/arrow"
+                app:tint="@color/white"
                 tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/usuarios"
                 android:layout_gravity="center"
                 android:layout_marginEnd="100dp"
+                android:src="@drawable/usuarios"
                 tools:ignore="ContentDescription" />
         </androidx.cardview.widget.CardView>
 

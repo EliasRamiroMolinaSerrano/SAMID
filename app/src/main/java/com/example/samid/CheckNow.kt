@@ -31,7 +31,13 @@ class CheckNow : AppCompatActivity() {
 
         // Set a click listener on 'card3' to navigate to AlarmsViewActivity
         binding.card3.setOnClickListener {
-            val intent = Intent(this, WebsocketImplementation::class.java)
+            val intent = Intent(this, AlarmActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Set a click listener on 'card3' to navigate to AlarmsViewActivity
+        binding.card2.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
             startActivity(intent)
         }
 

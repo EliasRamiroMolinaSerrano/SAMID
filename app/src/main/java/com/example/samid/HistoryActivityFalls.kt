@@ -1,11 +1,20 @@
 package com.example.samid
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.media.RingtoneManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Vibrator
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -31,7 +40,7 @@ class HistoryActivityFalls : AppCompatActivity() {
         // Set up the back button
         val backButton = findViewById<ImageView>(R.id.flecha)
         backButton.setOnClickListener {
-            finish() // This will finish the current activity and go back to the previous one
+            finish()
         }
 
         // Initialize card container
@@ -51,7 +60,10 @@ class HistoryActivityFalls : AppCompatActivity() {
                 try {
                     val jsonObject = JSONObject(text)
                     if (jsonObject.has("fall")) {
-                        runOnUiThread { addFallCard() } // Update UI on the main thread
+                        runOnUiThread {
+                            addFallCard()
+                            sendFallNotification()  // Send notification on fall detection
+                        }
                     }
                 } catch (e: JSONException) {
                     Log.e("WebSocket", "Error parsing message: ${e.message}")
@@ -78,6 +90,44 @@ class HistoryActivityFalls : AppCompatActivity() {
 
         // Create the WebSocket connection
         webSocket = client.newWebSocket(request, webSocketListener)
+    }
+
+    private fun sendFallNotification() {
+        // Vibrate the device
+        val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        vibrator.vibrate(500) // Vibrates for 500ms
+
+        // Set up the notification channel (for Android 8.0 and above)
+        val channelId = "fall_detection_channel"
+        val channelName = "Fall Detection Alerts"
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH).apply {
+                enableLights(true)
+                enableVibration(true)
+                vibrationPattern = longArrayOf(0, 500, 100, 500) // Custom vibration pattern
+                setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION), null)
+            }
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // Create the notification
+        val notificationIntent = Intent(this, HistoryActivityFalls::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.fall_ic) // Make sure you have this icon in your resources
+            .setContentTitle("Fall Detected")
+            .setContentText("A fall has been detected. Tap to view details.")
+            .setAutoCancel(true)
+            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+            .setVibrate(longArrayOf(0, 500, 100, 500)) // Custom vibration pattern
+            .setContentIntent(pendingIntent)
+            .build()
+
+        // Show the notification
+        notificationManager.notify(0, notification)
     }
 
     private fun fetchFallRecords() {
@@ -136,7 +186,6 @@ class HistoryActivityFalls : AppCompatActivity() {
 
     // Function to get the current time
     private fun getCurrentTime(): String {
-        // You can customize this method to return a formatted time string
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
         return dateFormat.format(currentDate)

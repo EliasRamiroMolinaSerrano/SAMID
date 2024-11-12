@@ -33,11 +33,6 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/phone_ic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="@string/phone_ic"
-            android:src="@drawable/phone_ic" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>
