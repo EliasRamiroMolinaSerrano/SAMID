@@ -70,7 +70,7 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         // Return the initialized WebSocket
-        return WebSocketManager.connect(client, "ws://192.168.0.116:8081", webSocketListener)
+        return WebSocketManager.connect(client, "${Constants.WSSERVER_URL}", webSocketListener)
     }
 
 
