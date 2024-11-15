@@ -2,6 +2,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -47,21 +48,20 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     // Conector para SqlServer
     implementation(libs.sourceforge.jtds)
     // libreria Pcs (utilidades)
     implementation(libs.libreria.pcs)
-
+    implementation("com.google.firebase:firebase-analytics")
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
+    implementation("com.google.firebase:firebase-firestore-ktx:21.6.0") // Corrección aquí
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
-    implementation ("org.osmdroid:osmdroid-android:6.1.12") //test
-    implementation ("com.google.android.gms:play-services-location:21.3.0") //test
-
-
-
+    implementation("org.osmdroid:osmdroid-android:6.1.12") // test
+    implementation("com.google.android.gms:play-services-location:21.3.0") // test
+    implementation("com.android.volley:volley:1.2.1")
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v121)
     implementation(libs.okhttp)
@@ -69,5 +69,4 @@ dependencies {
     implementation(libs.mpandroidchart)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-
 }

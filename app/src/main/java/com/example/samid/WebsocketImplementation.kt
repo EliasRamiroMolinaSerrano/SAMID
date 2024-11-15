@@ -222,7 +222,7 @@ class WebsocketImplementation : AppCompatActivity() {
         spo2Entries.add(Entry(0f, 0f)) // Initialize chart with a 0 value
 
         val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
-            color = Color.BLUE
+            color = Color.BLACK
             lineWidth = 2f
             setDrawCircles(false)
             setDrawValues(false) // Disable numbers on the data points
@@ -247,7 +247,7 @@ class WebsocketImplementation : AppCompatActivity() {
         }
         spo2Entries.add(Entry(spo2Index++.toFloat(), spo2Value.toFloat()))
         val spo2DataSet = LineDataSet(spo2Entries, "SpO2 Level").apply {
-            color = Color.BLUE
+            color = Color.BLACK
             lineWidth = 2f
             setDrawCircles(false)
             setDrawFilled(false)

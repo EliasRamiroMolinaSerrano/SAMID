@@ -24,6 +24,7 @@ kotlinx-coroutines = "1.5.1"
 cardview = "1.0.0"
 jtds="1.3.1"
 libpcs="1.0.4"
+firebaseFirestoreKtx = "25.1.1"
 
 [libraries]
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
@@ -63,6 +64,7 @@ androidx-cardview = { group = "androidx.cardview", name = "cardview", version.re
 sourceforge-jtds = { module = "net.sourceforge.jtds:jtds", version.ref = "jtds"}
 #Libreria de utilidades
 libreria-pcs = { module = "com.github.programadorescs:LibreriaPcs", version.ref = "libpcs"}
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

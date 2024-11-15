@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451181560214",
+    "project_id": "samid-4b23a",
+    "storage_bucket": "samid-4b23a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451181560214:android:85cf6bb4e4d19a2bc71db7",
+        "android_client_info": {
+          "package_name": "com.example.samid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrH0nh5X3Rrzf44wXBl_Ggi-OQRZozOt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
