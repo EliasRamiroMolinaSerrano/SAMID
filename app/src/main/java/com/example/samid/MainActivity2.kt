@@ -10,20 +10,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.DocumentSnapshot
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import okio.ByteString
-import org.json.JSONObject
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var webSocket: WebSocket
     private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -64,14 +63,51 @@ class MainActivity2 : AppCompatActivity() {
             if (name.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || relationship.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             } else {
-                // Enviar los datos a Firestore
-                registerUser(name, lastName, email, password, address, relationship)
+                // Obtener el último ID y registrar al usuario
+                getLastUserId { lastId ->
+                    val newId = lastId + 1
+                    registerUser(newId, name, lastName, email, password, address, relationship)
+                    updateLastUserId(newId)  // Actualizar el último ID utilizado
+                }
             }
         }
     }
 
-    private fun registerUser(name: String, lastName: String, email: String, password: String, address: String, relationship: String) {
+    private fun getLastUserId(callback: (Int) -> Unit) {
+        // Obtener el último ID usado desde Firestore
+        db.collection("settings").document("last_user_id")
+            .get()
+            .addOnSuccessListener { document ->
+                val lastId = if (document.exists()) {
+                    document.getLong("last_id")?.toInt() ?: 0
+                } else {
+                    0  // Si no existe, comenzamos con 0
+                }
+                callback(lastId)
+            }
+            .addOnFailureListener { e ->
+                Log.e("MainActivity2", "Error getting last user ID: ${e.message}")
+                callback(0)  // En caso de error, comenzamos con 0
+            }
+    }
+
+    private fun updateLastUserId(newId: Int) {
+        // Actualizar el último ID en Firestore
+        val settings = hashMapOf("last_id" to newId)
+
+        db.collection("settings").document("last_user_id")
+            .set(settings)
+            .addOnSuccessListener {
+                Log.d("MainActivity2", "Last user ID updated to $newId")
+            }
+            .addOnFailureListener { e ->
+                Log.e("MainActivity2", "Error updating last user ID: ${e.message}")
+            }
+    }
+
+    private fun registerUser(id: Int, name: String, lastName: String, email: String, password: String, address: String, relationship: String) {
         val user = hashMapOf(
+            "id" to id,  // Usamos el ID auto incrementable
             "Nombre" to name,
             "Apellido" to lastName,
             "Email" to email,
@@ -90,19 +126,7 @@ class MainActivity2 : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error en el registro: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-
-        // Encontrar el botón de registro
-        val registerBtn: Button = findViewById(R.id.register_btn)
-
-        // Agregar el listener para manejar el clic en el botón
-        registerBtn.setOnClickListener {
-            // Crear un Intent para iniciar la HomeActivity
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
     }
-
 
     private fun startWebSocket(): WebSocket {
         val client = OkHttpClient()
@@ -131,6 +155,4 @@ class MainActivity2 : AppCompatActivity() {
         // Return the initialized WebSocket
         return WebSocketManager.connect(client, "${Constants.WSSERVER_URL}", webSocketListener)
     }
-
-
 }

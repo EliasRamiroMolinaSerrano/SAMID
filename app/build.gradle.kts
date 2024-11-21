@@ -56,7 +56,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation(libs.play.services.maps)
     implementation(libs.androidx.cardview)
-    implementation("com.google.firebase:firebase-firestore-ktx:21.6.0") // Corrección aquí
+    implementation("com.google.firebase:firebase-firestore-ktx:21.6.0")
+    implementation(libs.firebase.auth.ktx) // Corrección aquí
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     implementation("org.osmdroid:osmdroid-android:6.1.12") // test
