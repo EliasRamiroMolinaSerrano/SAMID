@@ -1,13 +1,16 @@
 package com.example.samid
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,10 +21,25 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
+    private lateinit var analysisCard: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        // Obtener la referencia al CardView de "Análisis"
+        analysisCard = findViewById(R.id.analisis)
+
+        // Configurar el evento click del CardView
+        analysisCard.setOnClickListener {
+            // Obtener el nombre desde SharedPreferences
+            val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+            val name = sharedPref.getString("name", "Usuario") // Valor por defecto "Usuario" si no se encuentra el nombre
+
+            // Mostrar un mensaje con el nombre
+            Toast.makeText(this, "Bienvenido/a, $name", Toast.LENGTH_SHORT).show()
+        }
+
 
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)

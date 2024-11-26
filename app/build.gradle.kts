@@ -52,6 +52,13 @@ dependencies {
     // Conector para SqlServer
     implementation(libs.sourceforge.jtds)
     // libreria Pcs (utilidades)
+    implementation ("com.google.firebase:firebase-auth:21.5.0")
+    implementation ("com.google.firebase:firebase-database:20.3.3") // o Firestore
+    implementation ("com.google.firebase:firebase-database:20.0.5")
+    implementation ("com.google.firebase:firebase-auth:21.0.5")
+    implementation ("com.google.firebase:firebase-auth:21.0.0")
+    implementation ("com.google.firebase:firebase-analytics:21.0.0")
+    implementation ("com.google.firebase:firebase-firestore:24.0.0")
     implementation(libs.libreria.pcs)
     implementation("com.google.firebase:firebase-analytics")
     implementation(libs.play.services.maps)

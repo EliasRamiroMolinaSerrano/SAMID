@@ -67,7 +67,19 @@ class HistoryActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_logout -> {
-                    // Acción para "Logout"
+                    // Limpiar datos de sesión
+                    val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.clear() // Elimina los datos de la sesión
+                    editor.apply()
+
+                    // Redirigir al usuario a MainActivity
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+
+                    // Finalizar la actividad actual
+                    finish()
                     true
                 }
                 else -> false

@@ -8,7 +8,6 @@
     android:background="@color/white"
     tools:context=".RegisterPatient">
 
-
     <include
         android:id="@+id/header"
         layout="@layout/go_back_header" />
@@ -17,7 +16,6 @@
         android:id="@+id/texto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="70dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/registrar_nuevo_paciente"
@@ -41,11 +39,7 @@
         app:layout_constraintStart_toStartOf="@+id/texto1"
         app:layout_constraintTop_toTopOf="@+id/texto1"
         app:layout_constraintEnd_toEndOf="@+id/texto1"
-
         />
-
-
-
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/textView1"
@@ -58,7 +52,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:elevation="7dp"
-        android:hint="  Nombre"
+        android:hint="Nombre"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/rounded_edittext"
     />
@@ -74,7 +68,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:elevation="7dp"
-        android:hint="  Lastname"
+        android:hint="Apellido"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/rounded_edittext"
         />
@@ -90,7 +84,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:elevation="7dp"
-        android:hint="  Address"
+        android:hint="Direccion"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/rounded_edittext"
         />
@@ -106,7 +100,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:elevation="7dp"
-        android:hint="  Age"
+        android:hint="Edad"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/rounded_edittext"
         />
@@ -117,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat"
-        android:text="Patient's condition"
+        android:text="Condicion del paciente"
         android:textColor="@color/GrayLow"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +145,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:elevation="7dp"
-        android:hint="  SAMID BRACELET ID"
+        android:hint="ID del dispositivo SAMID"
         android:fontFamily="@font/montserrat"
         android:background="@drawable/rounded_edittext"
         />

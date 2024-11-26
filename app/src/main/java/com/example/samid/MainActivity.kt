@@ -84,10 +84,29 @@ class MainActivity : ComponentActivity() {
             .get()
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
-                    // Usuario encontrado, guardar sesión
-                    saveSession(username)
+                    // Usuario encontrado
+                    val userDoc = documents.documents[0] // Asumimos que solo hay un documento por usuario
 
-                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    // Obtener todos los datos del usuario
+                    val id = userDoc.id // Guardar el ID del documento
+                    val name = userDoc.getString("Nombre") ?: "Usuario"
+                    val surname = userDoc.getString("Apellido") ?: "Apellido"
+                    val email = userDoc.getString("Email") ?: "Email"
+                    val password = userDoc.getString("Contraseña") ?: "Contraseña"
+                    val address = userDoc.getString("Direccion") ?: "Dirección"
+                    val parentesco = userDoc.getString("Parentesco") ?: "N/A"
+
+                    // Guardar sesión con todos los datos
+                    saveSession(id, username, name, surname, email, password, address, parentesco)
+
+                    // Mostrar mensaje personalizado
+                    Toast.makeText(
+                        this,
+                        "Inicio de sesión exitoso. Bienvenido/a ",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    // Redirigir al HomeActivity
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -103,11 +122,26 @@ class MainActivity : ComponentActivity() {
             }
     }
 
-    private fun saveSession(username: String) {
+    private fun saveSession(id: String, username: String, name: String, surname: String, email: String, password: String, address: String, parentesco: String) {
         val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("isLoggedIn", true)
+        editor.putString("userId", id) // Guardar el ID
         editor.putString("username", username)
+        editor.putString("name", name)
+        editor.putString("surname", surname)
+        editor.putString("email", email)
+        editor.putString("password", password)
+        editor.putString("address", address)
+        editor.putString("parentesco", parentesco)
         editor.apply() // Guardar cambios
+    }
+
+    // Método para cerrar sesión y borrar los datos guardados
+    fun logout() {
+        val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.clear()  // Elimina todos los datos guardados
+        editor.apply()
     }
 }
