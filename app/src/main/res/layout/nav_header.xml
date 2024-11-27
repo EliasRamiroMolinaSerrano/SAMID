@@ -1,22 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:gravity="top"
     android:padding="16dp"
     android:background="@color/verdoso2"
     android:id="@+id/Nav_Header"
-    tools:context=".NavHeader"
     android:layout_height="120dp">
 
     <ImageView
+        android:id="@+id/imagen"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:contentDescription="@string/userimage"
         android:src="@drawable/icon_account_circle"/>
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/nav_header_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/username"
@@ -27,7 +26,7 @@
         android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/nav_header_parentesco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cuidador"

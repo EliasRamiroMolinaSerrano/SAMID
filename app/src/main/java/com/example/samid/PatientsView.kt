@@ -3,6 +3,7 @@ package com.example.samid
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -10,7 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class PatientsView : AppCompatActivity() {
+class PatientsView : BaseActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
@@ -19,9 +20,43 @@ class PatientsView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.patients_view)
 
+// Recibir datos del Intent (solo la primera vez)
+        val name = intent.getStringExtra("name")
+        val surname = intent.getStringExtra("surname")
+        val address = intent.getStringExtra("address")
+        val age = intent.getStringExtra("age")
+        val condition = intent.getStringExtra("condition")
+        val deviceId = intent.getStringExtra("deviceId")
+
+        // Si los datos existen, guárdalos en SharedPreferences
+        if (name != null && surname != null && address != null && age != null && condition != null && deviceId != null) {
+            val sharedPref = getSharedPreferences("PatientData", MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.putString("name", name)
+            editor.putString("surname", surname)
+            editor.putString("address", address)
+            editor.putString("age", age)
+            editor.putString("condition", condition)
+            editor.putString("deviceId", deviceId)
+            editor.apply()  // Guardamos los datos
+        }
+
+        // Recuperar los datos desde SharedPreferences al iniciar la actividad
+        val sharedPref = getSharedPreferences("PatientData", MODE_PRIVATE)
+        val storedName = sharedPref.getString("name", "No disponible")
+        val storedCondition = sharedPref.getString("condition", "No disponible")
+
+        // Mostrar los datos en el CardView
+        findViewById<TextView>(R.id.textViewName).text = "Nombre: $storedName"
+        findViewById<TextView>(R.id.textViewCondition).text = "Condición: $storedCondition"
+
+        // Llamamos al método para actualizar el NavHeader
+        updateNavHeader()
+
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+
 
         // Icono del menú (rayas/hamburguesa)
         val rayasIcon = findViewById<ImageView>(R.id.rayas)

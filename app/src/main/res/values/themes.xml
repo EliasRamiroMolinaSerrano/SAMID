@@ -23,7 +23,6 @@
     <style name="Theme.SAMID" parent="Base.Theme.SAMID" />
 
     <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/background_splash_screen</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
 

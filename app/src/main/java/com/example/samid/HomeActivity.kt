@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -40,10 +41,23 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this, "Bienvenido/a, $name", Toast.LENGTH_SHORT).show()
         }
 
-
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+
+        // Obtener los datos guardados de la sesión (nombre y parentesco)
+        val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val name = sharedPref.getString("name", "Usuario")
+        val parentesco = sharedPref.getString("parentesco", "N/A")
+
+        // Actualizar el NavHeader con los datos obtenidos
+        val headerView = navView.getHeaderView(0) // Obtener la vista del header
+        val usernameTextView = headerView.findViewById<TextView>(R.id.nav_header_username)
+        val parentescoTextView = headerView.findViewById<TextView>(R.id.nav_header_parentesco)
+
+        // Actualizar las vistas del header
+        usernameTextView.text = name ?: "Usuario"
+        parentescoTextView.text = parentesco ?: "N/A"
 
         // Icono del menú (rayas/hamburguesa)
         val rayasIcon = findViewById<ImageView>(R.id.rayas)
@@ -59,43 +73,34 @@ class HomeActivity : AppCompatActivity() {
         // Manejo de los clics en los elementos del menú lateral
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    true
-                }
+                R.id.nav_home -> true
                 R.id.patients_view -> {
-                    val intent = Intent(this, PatientsView::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, PatientsView::class.java))
                     true
                 }
                 R.id.weekly_analysis -> {
-                    val intent = Intent(this, WeeklyStats::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, WeeklyStats::class.java))
                     true
                 }
                 R.id.check_now -> {
-                    val intent = Intent(this, CheckNow::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, CheckNow::class.java))
                     true
                 }
                 R.id.history -> {
-                    val intent = Intent(this, HistoryActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, HistoryActivity::class.java))
                     true
                 }
                 R.id.device_status -> {
-                    // Navegar a la actividad DeviceStatus
-                    val intent = Intent(this, DeviceStatus::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(this, DeviceStatus::class.java))
                     true
                 }
                 R.id.nav_logout -> {
-                    // Limpiar datos de sesión
-                    val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                    // Limpiar los datos de sesión
                     val editor = sharedPref.edit()
                     editor.clear() // Elimina los datos de la sesión
                     editor.apply()
 
-                    // Redirigir al usuario a MainActivity
+                    // Redirigir a MainActivity
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -111,39 +116,11 @@ class HomeActivity : AppCompatActivity() {
         // Button to trigger the custom dialog
         val pacientBtn = findViewById<Button>(R.id.pacientBtn)
 
-            // Set an onClickListener to show the custom dialog when pacientBtn is clicked
-        pacientBtn.setOnClickListener {
-
-            // Inflate the custom dialog layout
-            val customDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
-
-            // Create the AlertDialog
-            val dialogBuilder = AlertDialog.Builder(this)
-                .setView(customDialogView) // Set the custom dialog view
-                .create()
-
-            // Set transparent background for the dialog
-            dialogBuilder.window?.setBackgroundDrawableResource(android.R.color.transparent)
-
-            // Show the dialog
-            dialogBuilder.show()
-
-            // Find the OK button in the custom dialog and set its onClickListener
-            val okBtn = customDialogView.findViewById<Button>(R.id.ok_btn)
-            okBtn.setOnClickListener {
-                dialogBuilder.dismiss() // Close the dialog when OK is clicked
-            }
-
-        }
-
         pacientBtn.setOnClickListener {
             // Iniciar la nueva actividad
             val intent = Intent(this, PatientsView::class.java)
             startActivity(intent)
         }
-
-
-
 
         // Handle system bars padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.activity_home)) { v, insets ->

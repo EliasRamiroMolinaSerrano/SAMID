@@ -9,7 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 
-class DeviceStatus : AppCompatActivity() {
+class DeviceStatus : BaseActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
@@ -21,6 +21,9 @@ class DeviceStatus : AppCompatActivity() {
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
+
+        // Llamamos al método para actualizar el NavHeader
+        updateNavHeader()
 
         // Icono del menú (rayas/hamburguesa)
         val rayasIcon = findViewById<ImageView>(R.id.rayas)

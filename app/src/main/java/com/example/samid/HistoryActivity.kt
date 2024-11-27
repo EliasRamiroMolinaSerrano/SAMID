@@ -9,7 +9,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : BaseActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
@@ -32,6 +32,9 @@ class HistoryActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        // Llamamos al método para actualizar el NavHeader
+        updateNavHeader()
 
         // Manejo de los clics en los elementos del menú lateral
         navView.setNavigationItemSelectedListener { menuItem ->

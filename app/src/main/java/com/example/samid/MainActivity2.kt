@@ -127,9 +127,10 @@ class MainActivity2 : AppCompatActivity() {
         db.collection("usuarios").add(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                // Navegar a HomeActivity
-                val intent = Intent(this, HomeActivity::class.java)
+// Después de registrar, redirige a la pantalla de login
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()  // Termina la actividad actual para que el usuario no regrese a ella al presionar el botón atrás
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error en el registro: ${e.message}", Toast.LENGTH_SHORT).show()

@@ -1,7 +1,9 @@
 package com.example.samid
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -29,6 +31,20 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+    }
+
+    protected fun updateNavHeader() {
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val sharedPref = getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+        val name = sharedPref.getString("name", "Usuario")
+        val parentesco = sharedPref.getString("parentesco", "N/A")
+
+        val headerView = navView.getHeaderView(0)
+        val usernameTextView = headerView.findViewById<TextView>(R.id.nav_header_username)
+        val parentescoTextView = headerView.findViewById<TextView>(R.id.nav_header_parentesco)
+
+        usernameTextView.text = name ?: "Usuario"
+        parentescoTextView.text = parentesco ?: "N/A"
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
