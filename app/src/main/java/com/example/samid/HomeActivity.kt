@@ -41,6 +41,18 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(this, "Bienvenido/a, $name", Toast.LENGTH_SHORT).show()
         }
 
+        // Configura el listener para el CardView
+        findViewById<CardView>(R.id.analisis).setOnClickListener {
+            val intent = Intent(this, WeeklyStats::class.java) // Cambia a la actividad CheckNow
+            startActivity(intent) // Inicia la actividad
+        }
+
+        // Configura el listener para el CardView
+        findViewById<CardView>(R.id.devices).setOnClickListener {
+            val intent = Intent(this, DeviceStatus::class.java) // Cambia a la actividad CheckNow
+            startActivity(intent) // Inicia la actividad
+        }
+
         // Inicializar DrawerLayout y NavigationView
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
@@ -64,6 +76,15 @@ class HomeActivity : AppCompatActivity() {
         rayasIcon.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)  // Abre el menú lateral al hacer clic
         }
+
+        // Obtener la referencia al TextView con el ID "nombre"
+        val nombreTextView = findViewById<TextView>(R.id.nombre)
+
+
+
+        // Asignar el nombre recuperado al TextView
+        nombreTextView.text = name
+
 
         // Configuración del toggle para abrir/cerrar el menú lateral con el botón de "hamburguesa"
         val toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close)

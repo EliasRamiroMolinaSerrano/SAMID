@@ -31,7 +31,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/samuel"
+            android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -170,6 +170,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:layout_marginTop="20dp"
         app:menu="@menu/nav_menu"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/black"

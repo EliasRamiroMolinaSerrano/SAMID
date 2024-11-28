@@ -18,8 +18,8 @@
         <!-- Icono del menú (hamburguesa) -->
         <ImageView
             android:id="@+id/rayas"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_gravity="center"
             android:src="@drawable/baseline_menu_24"
             tools:ignore="ContentDescription" />
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="30dp">
 
-        <!-- Icono de notificación -->
+        <!-- Icono de notificación
         <ImageView
             android:id="@+id/notificacion"
             android:layout_width="24dp"
@@ -41,7 +41,7 @@
             android:layout_gravity="center"
             android:src="@drawable/notification_icon"
             app:tint="@color/black"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription" />-->
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
