@@ -27,6 +27,8 @@ import java.util.Locale
 import android.os.AsyncTask
 import okhttp3.Response
 import org.json.JSONArray
+import java.text.ParseException
+import java.util.*
 
 class HistoryActivityFalls : AppCompatActivity() {
 
@@ -61,7 +63,7 @@ class HistoryActivityFalls : AppCompatActivity() {
                     val jsonObject = JSONObject(text)
                     if (jsonObject.has("fall")) {
                         runOnUiThread {
-                            addFallCard()
+                            addFallCard2()
                             sendFallNotification()  // Send notification on fall detection
                         }
                     }
@@ -136,7 +138,7 @@ class HistoryActivityFalls : AppCompatActivity() {
             .url("${Constants.RESTSERVER_URL}/get_falls") // Ensure this URL matches your server's endpoint
             .build()
 
-        // Use AsyncTask to fetch data on a background thread
+        // Usa AsyncTask para realizar la solicitud en un hilo secundario
         AsyncTask.execute {
             try {
                 val response: Response = client.newCall(request).execute()
@@ -146,9 +148,13 @@ class HistoryActivityFalls : AppCompatActivity() {
                     val jsonArray = JSONArray(jsonResponse)
                     for (i in 0 until jsonArray.length()) {
                         val fallRecord = jsonArray.getJSONObject(i)
+
+                        // Extrae el tiempo del registro desde el JSON
+                        val time = fallRecord.getString("detected_at") // Asegúrate de que el campo se llame 'time' en la respuesta JSON
+
                         runOnUiThread {
-                            // Add a card for each fall record
-                            addFallCard()
+                            // Añade una tarjeta para cada registro de caída con el tiempo extraído
+                            addFallCard(time)
                         }
                     }
                 }
@@ -158,7 +164,49 @@ class HistoryActivityFalls : AppCompatActivity() {
         }
     }
 
-    private fun addFallCard() {
+    private fun addFallCard(time: String) {
+        // Infla el diseño de la tarjeta
+        val cardView = layoutInflater.inflate(R.layout.card_fall, null)
+
+        // Encuentra las vistas dentro del diseño de la tarjeta
+        val nameTextView = cardView.findViewById<TextView>(R.id.name)
+        val timeTextView = cardView.findViewById<TextView>(R.id.time)
+
+        // Formato de entrada (ISO 8601)
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        inputFormat.timeZone = TimeZone.getTimeZone("UTC")  // Asegúrate de que esté en UTC
+
+        // Formato de salida
+        val outputFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+
+        // Convierte y formatea la fecha
+        val formattedTime = try {
+            val date = inputFormat.parse(time)  // Convierte a tipo Date
+            outputFormat.format(date)           // Convierte a formato deseado
+        } catch (e: ParseException) {
+            Log.e("DateParseError", "Error parsing date: ${e.message}")
+            time  // En caso de error, usa el tiempo original
+        }
+
+        // Establece los datos para la nueva tarjeta
+        nameTextView.text = "Fall Detected"
+        timeTextView.text = formattedTime
+
+        // Crea parámetros de diseño para la tarjeta
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
+        // Establece el margen superior
+        layoutParams.setMargins(0, 20, 0, 0)
+        cardView.layoutParams = layoutParams
+
+        // Añade la tarjeta al contenedor
+        cardContainer.addView(cardView)
+    }
+
+    private fun addFallCard2() {
         // Inflate the card layout
         val cardView = layoutInflater.inflate(R.layout.card_fall, null)
 
