@@ -46,10 +46,10 @@ class WeeklyStats : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.weekly_analysis -> {
+                /*R.id.weekly_analysis -> {
 
                     true
-                }
+                }*/
                 R.id.check_now -> {
                     val intent = Intent(this, CheckNow::class.java)
                     startActivity(intent)

@@ -51,7 +51,7 @@ open class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         when (item.itemId) {
             R.id.nav_home -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment()).commit()
-            R.id.weekly_analysis -> {}
+            //R.id.weekly_analysis -> {}
             R.id.check_now -> {}
             R.id.history -> {}
             R.id.device_status -> {}

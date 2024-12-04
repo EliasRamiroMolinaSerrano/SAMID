@@ -43,7 +43,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Configura el listener para el CardView
         findViewById<CardView>(R.id.analisis).setOnClickListener {
-            val intent = Intent(this, WeeklyStats::class.java) // Cambia a la actividad CheckNow
+            val intent = Intent(this, MapActivity::class.java) // Cambia a la actividad CheckNow
             startActivity(intent) // Inicia la actividad
         }
 
@@ -99,10 +99,10 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, PatientsView::class.java))
                     true
                 }
-                R.id.weekly_analysis -> {
+                /*R.id.weekly_analysis -> {
                     startActivity(Intent(this, WeeklyStats::class.java))
                     true
-                }
+                }*/
                 R.id.check_now -> {
                     startActivity(Intent(this, CheckNow::class.java))
                     true

@@ -86,11 +86,11 @@ class PatientsView : BaseActivity() {
                 R.id.patients_view -> {
                     true
                 }
-                R.id.weekly_analysis -> {
+                /*R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
                     true
-                }
+                }*/
                 R.id.check_now -> {
                     val intent = Intent(this, CheckNow::class.java)
                     startActivity(intent)
