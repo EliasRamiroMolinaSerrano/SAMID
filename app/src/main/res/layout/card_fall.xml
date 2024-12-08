@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="350dp"
-    android:layout_height="50dp"
+    android:layout_height="70dp"
     android:layout_marginTop="20dp"
     app:cardBackgroundColor="@color/Primary_Light"
     app:cardCornerRadius="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
         android:orientation="horizontal">
 
         <TextView
@@ -18,11 +18,11 @@
             android:layout_width="151dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semi_bold"
+            android:paddingStart="10dp"
+            android:paddingTop="8dp"
             android:text="Fall Detected"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:paddingTop="8dp"
-            android:paddingStart="10dp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/time"
@@ -32,7 +32,5 @@
             android:text="Just Now"
             android:textColor="@color/black"
             android:textSize="18sp" />
-
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -2,6 +2,7 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -85,11 +86,11 @@ class PatientsView : BaseActivity() {
                 R.id.patients_view -> {
                     true
                 }
-                R.id.weekly_analysis -> {
+                /*R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
                     true
-                }
+                }*/
                 R.id.check_now -> {
                     val intent = Intent(this, CheckNow::class.java)
                     startActivity(intent)
@@ -125,9 +126,16 @@ class PatientsView : BaseActivity() {
             }
         }
 
+
         // Configura el listener para el CardView
-        findViewById<CardView>(R.id.cardPatients).setOnClickListener {
+        findViewById<Button>(R.id.buttonCheck).setOnClickListener {
             val intent = Intent(this, CheckNow::class.java) // Cambia a la actividad CheckNow
+            startActivity(intent) // Inicia la actividad
+        }
+
+        // Configura el listener para el CardView
+        findViewById<Button>(R.id.buttonDevice).setOnClickListener {
+            val intent = Intent(this, DeviceStatus::class.java) // Cambia a la actividad CheckNow
             startActivity(intent) // Inicia la actividad
         }
 

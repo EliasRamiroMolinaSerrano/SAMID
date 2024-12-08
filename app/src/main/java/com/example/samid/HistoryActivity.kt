@@ -49,11 +49,11 @@ class HistoryActivity : BaseActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.weekly_analysis -> {
+                /*R.id.weekly_analysis -> {
                     val intent = Intent(this, WeeklyStats::class.java)
                     startActivity(intent)
                     true
-                }
+                }*/
                 R.id.check_now -> {
                     val intent = Intent(this, CheckNow::class.java)
                     startActivity(intent)
@@ -90,18 +90,18 @@ class HistoryActivity : BaseActivity() {
         }
 
         // Configurar clics en las CardViews
-        val card1 = findViewById<CardView>(R.id.card)
+        /*val card1 = findViewById<CardView>(R.id.card)
         card1.setOnClickListener {
             // Navegar a la actividad deseada al hacer clic en el primer CardView
             val intent = Intent(this, HistoryActivityCalls::class.java) // Reemplaza DesiredActivity1 con tu actividad real
             startActivity(intent)
-        }
+        }*/
 
-        val card2 = findViewById<CardView>(R.id.card2)
+        /*val card2 = findViewById<CardView>(R.id.card2)
         card2.setOnClickListener {
             val intent = Intent(this, HistoryActivityResults::class.java) // Reemplaza DesiredActivity2 con tu actividad real
             startActivity(intent)
-        }
+        }*/
 
         val card3 = findViewById<CardView>(R.id.card3)
         card3.setOnClickListener {

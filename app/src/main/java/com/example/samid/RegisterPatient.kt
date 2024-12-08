@@ -16,9 +16,10 @@ class RegisterPatient : AppCompatActivity() {
     private lateinit var surnameEditText: EditText
     private lateinit var addressEditText: EditText
     private lateinit var ageEditText: EditText
-    private lateinit var conditionSpinner: Spinner
     private lateinit var deviceIdEditText: EditText
     private lateinit var registerButton: Button
+    private lateinit var conditionEditText: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class RegisterPatient : AppCompatActivity() {
         surnameEditText = findViewById(R.id.textView2)
         addressEditText = findViewById(R.id.textView3)
         ageEditText = findViewById(R.id.textView4)
-        conditionSpinner = findViewById(R.id.spinnerCondition)
+        conditionEditText = findViewById(R.id.textViewCondition)
         deviceIdEditText = findViewById(R.id.textView5)
         registerButton = findViewById(R.id.RegisterBtn)
 
@@ -41,7 +42,6 @@ class RegisterPatient : AppCompatActivity() {
         )
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        conditionSpinner.adapter = adapter
 
         // Botón de registro
         registerButton.setOnClickListener {
@@ -49,7 +49,7 @@ class RegisterPatient : AppCompatActivity() {
             val surname = surnameEditText.text.toString()
             val address = addressEditText.text.toString()
             val age = ageEditText.text.toString()
-            val condition = conditionSpinner.selectedItem.toString()
+            val condition = conditionEditText.text.toString()
             val deviceId = deviceIdEditText.text.toString()
 
             if (name.isEmpty() || surname.isEmpty() || address.isEmpty() || age.isEmpty() || deviceId.isEmpty()) {

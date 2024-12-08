@@ -46,7 +46,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, HomeFragment()).commit()
             R.id.patients_view -> {}
-            R.id.weekly_analysis -> {}
+            //R.id.weekly_analysis -> {}
             R.id.check_now -> {}
             R.id.history -> {}
             R.id.device_status -> {}
