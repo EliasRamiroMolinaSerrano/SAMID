@@ -28,6 +28,9 @@ class WebsocketImplementation : AppCompatActivity() {
     private lateinit var spo2Chart: LineChart
     private var spo2Entries = ArrayList<Entry>()
     private var spo2Index = 0
+    private var bpmEntries = ArrayList<Entry>()
+    private var bpmIndex = 0
+
     private val heartRateEntries = mutableListOf<Entry>()
     private var dataIndex = 0
     private var isUpdating = false // To avoid overlapping updates
@@ -36,21 +39,15 @@ class WebsocketImplementation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
-        // Initialize UI components
-        spo2Chart = findViewById(R.id.spo2ChartView)
-        setupSpo2Chart()
+        // Inicializar vistas ANTES de usarlas
         heartRateChart = findViewById(R.id.heartRateChartView)
+        spo2Chart = findViewById(R.id.spo2ChartView)
         bpmTextView = findViewById(R.id.bpmTextView)
         spo2TextView = findViewById(R.id.spo2TextView)
 
-        setupCharts()
+        setupBpmChart()
+        setupSpo2Chart()
         setupWebSocket()
-
-        // Set up the back button
-        val backButton = findViewById<ImageView>(R.id.flecha) // replace with the actual ID of your back button
-        backButton.setOnClickListener {
-            finish() // This will finish the current activity and go back to the previous one
-        }
     }
 
     private fun setupWebSocket() {
@@ -69,26 +66,18 @@ class WebsocketImplementation : AppCompatActivity() {
                 try {
                     val jsonData = JSONObject(text)
 
-                    // Check for "final_bpm" and "final_spo2"
-                    if (jsonData.has("final_bpm") && jsonData.has("final_spo2")) {
-                        val avgBpm = jsonData.getInt("final_bpm") // Use the correct key
-                        val avgSpo2 = jsonData.getInt("final_spo2") // Use the correct key
+                    // Si recibimos BPM y SpO2 actuales
+                    if (jsonData.has("bpm") && jsonData.has("spo2")) {
+                        val bpm = jsonData.getInt("bpm")
+                        val spo2 = jsonData.getInt("spo2")
 
-                        Log.d("WebSocket", "Average BPM: $avgBpm, Average SpO2: $avgSpo2")
-
-                        // Update UI on the main thread
                         runOnUiThread {
-                            updateBpmAndSpo2(avgBpm, avgSpo2)
-                        }
-                    } else if (jsonData.has("beat")) {
-                        val beatValue = jsonData.getInt("beat")
-                        updateHeartRateChart(beatValue) // Update chart with beat value
-                    } else if (jsonData.has("spo2")) {
-                        val spo2Value = jsonData.getInt("spo2")
-                        runOnUiThread {
-                            updateSpo2Chart(spo2Value) // Update SpO2 chart with new value
+                            updateBpmAndSpo2(bpm, spo2)
+                            updateBpmChart(bpm)       // NUEVO
+                            updateSpo2Chart(spo2)
                         }
                     }
+
                 } catch (e: Exception) {
                     Log.e("WebSocket", "Error processing message: ${e.message}")
                 }
@@ -216,6 +205,43 @@ class WebsocketImplementation : AppCompatActivity() {
             spo2TextView.text = avgSpo2?.toString() ?: "N/A"
         }
     }
+
+    private fun setupBpmChart() {
+        bpmEntries.add(Entry(0f, 0f))
+
+        val bpmDataSet = LineDataSet(bpmEntries, "BPM Level").apply {
+            color = Color.RED
+            lineWidth = 2f
+            setDrawCircles(false)
+            setDrawValues(false)
+        }
+
+        heartRateChart.data = LineData(bpmDataSet)
+        heartRateChart.setBackgroundColor(Color.WHITE)
+        heartRateChart.setNoDataText("No BPM data yet")
+        heartRateChart.description.isEnabled = false
+        heartRateChart.legend.isEnabled = false
+        heartRateChart.invalidate()
+    }
+
+    private fun updateBpmChart(bpmValue: Int) {
+        if (bpmIndex > 100) bpmEntries.removeAt(0)
+        bpmEntries.add(Entry(bpmIndex++.toFloat(), bpmValue.toFloat()))
+
+        val bpmDataSet = LineDataSet(bpmEntries, "BPM Level").apply {
+            color = Color.RED
+            lineWidth = 2f
+            setDrawCircles(false)
+            setDrawValues(false)
+        }
+
+        heartRateChart.data = LineData(bpmDataSet)
+        heartRateChart.data.notifyDataChanged()
+        heartRateChart.notifyDataSetChanged()
+        heartRateChart.invalidate()
+        heartRateChart.moveViewToX(bpmIndex.toFloat() - 100)
+    }
+
 
     private fun setupSpo2Chart() {
         // Add an initial entry with a value of 0
