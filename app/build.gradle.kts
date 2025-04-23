@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     // Conector para SqlServer
+    implementation ("com.google.android.material:material:1.9.0")
     implementation(libs.sourceforge.jtds)
     // libreria Pcs (utilidades)
     implementation ("com.google.firebase:firebase-auth:21.5.0")

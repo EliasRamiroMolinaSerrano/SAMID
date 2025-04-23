@@ -5,10 +5,17 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
+    <!-- Header de navegación -->
+    <include
+        android:id="@+id/header"
+        layout="@layout/go_back_header" />
+
+    <!-- Lista de alarmas activas -->
     <ScrollView
+        android:layout_below="@id/header"
+        android:layout_above="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/addButton"
         android:padding="16dp">
 
         <LinearLayout
@@ -16,9 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="100dp" />
+            android:gravity="center_horizontal" />
     </ScrollView>
 
+    <!-- Botón para agregar nueva alarma -->
     <ImageView
         android:id="@+id/addButton"
         android:layout_width="70dp"

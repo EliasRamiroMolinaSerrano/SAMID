@@ -1,56 +1,93 @@
 package com.example.samid
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.samid.databinding.ActivityAlarmsViewBinding
+import androidx.cardview.widget.CardView
+import org.json.JSONArray
+import org.json.JSONObject
 
 class AlarmsViewActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAlarmsViewBinding
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_alarms_view)
 
-        binding = ActivityAlarmsViewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val container = findViewById<LinearLayout>(R.id.alarmListContainer)
+        val addButton = findViewById<ImageView>(R.id.addButton)
 
-        // Extraer los datos pasados por el Intent
-        val nombrePaciente = intent.getStringExtra("nombrePaciente")
-        val nombreAlarma = intent.getStringExtra("nombreAlarma")
-        val descripcion = intent.getStringExtra("descripcion")
-        val Hora = intent.getStringExtra("HoraSeleccionada")  // Clave correcta para la hora seleccionada
+        val alarmas = cargarAlarmas(this)
 
-        // Verificar si hay datos para mostrar
-        if (nombrePaciente.isNullOrEmpty() || nombreAlarma.isNullOrEmpty() || descripcion.isNullOrEmpty()) {
-            // Ocultar el CardView si no hay datos
-            binding.cardPatients.visibility = View.GONE
-            binding.texto2.text = "No hay alarmas configuradas."
-        } else {
-            // Mostrar el CardView con los datos de la alarma
-            binding.cardPatients.visibility = View.VISIBLE
-            binding.nombrePaciente.text = nombrePaciente
-            binding.nombreAlarma.text = nombreAlarma
-            binding.descripcionAlarma.text = descripcion
-            binding.Hora.text = Hora  // Mostrar la hora seleccionada
+        for (i in 0 until alarmas.length()) {
+            val alarma = alarmas.getJSONObject(i)
+            if (alarma.getBoolean("activa")) {
+                container.addView(crearCardAlarma(alarma))
+            }
         }
 
-        // Configurar el botón de agregar alarma
-        binding.agregarBtn.setOnClickListener {
+        addButton.setOnClickListener {
             val intent = Intent(this, AlarmActivity::class.java)
             startActivity(intent)
         }
+    }
 
-        // Manejar el padding de las barras del sistema
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+    private fun crearCardAlarma(alarma: JSONObject): CardView {
+        val card = CardView(this).apply {
+            radius = 16f
+            cardElevation = 8f
+            setContentPadding(32, 24, 32, 24)
+            useCompatPadding = true
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(0, 0, 0, 32)
+            layoutParams = params
         }
+
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+        }
+
+        val nombre = TextView(this).apply {
+            text = "👤 Paciente: ${alarma.getString("nombre")}"
+            textSize = 18f
+            setPadding(0, 0, 0, 8)
+        }
+
+        val medicamento = TextView(this).apply {
+            text = "💊 Medicamento: ${alarma.getString("medicamento")}"
+        }
+
+        val cantidad = TextView(this).apply {
+            text = "📦 Cantidad: ${alarma.getString("cantidad")}"
+        }
+
+        val fecha = TextView(this).apply {
+            text = "📅 Fecha: ${alarma.getString("fecha")}"
+        }
+
+        val hora = TextView(this).apply {
+            text = "⏰ Hora: ${alarma.getString("hora")}"
+        }
+
+        layout.apply {
+            addView(nombre)
+            addView(medicamento)
+            addView(cantidad)
+            addView(fecha)
+            addView(hora)
+        }
+
+        card.addView(layout)
+        return card
+    }
+
+    private fun cargarAlarmas(context: Context): JSONArray {
+        val sharedPref = context.getSharedPreferences("alarmas_guardadas", MODE_PRIVATE)
+        val json = sharedPref.getString("alarmas", "[]")
+        return JSONArray(json)
     }
 }
