@@ -2,6 +2,7 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -59,8 +60,9 @@ class CheckNow : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
+                Log.e("NetworkError", "Request failed", e)
                 runOnUiThread {
-                    Toast.makeText(this@CheckNow, "Failed to send request", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CheckNow, "Failed to send request: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
 
