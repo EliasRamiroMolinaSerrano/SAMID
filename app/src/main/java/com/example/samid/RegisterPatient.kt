@@ -2,13 +2,10 @@ package com.example.samid
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONArray
+import org.json.JSONObject
 
 class RegisterPatient : AppCompatActivity() {
 
@@ -17,9 +14,8 @@ class RegisterPatient : AppCompatActivity() {
     private lateinit var addressEditText: EditText
     private lateinit var ageEditText: EditText
     private lateinit var deviceIdEditText: EditText
-    private lateinit var registerButton: Button
     private lateinit var conditionEditText: EditText
-
+    private lateinit var registerButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,16 +30,6 @@ class RegisterPatient : AppCompatActivity() {
         deviceIdEditText = findViewById(R.id.textView5)
         registerButton = findViewById(R.id.RegisterBtn)
 
-        // Configurar Spinner
-        val options = arrayOf(
-            "Alzheimer", "Parkinson", "Diabetes", "Hipertensión",
-            "Cáncer de pulmón", "Cáncer de mama", "Cáncer colorectal",
-            "Cáncer de próstata", "Leucemia", "Linfoma"
-        )
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, options)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Botón de registro
         registerButton.setOnClickListener {
             val name = nameEditText.text.toString()
             val surname = surnameEditText.text.toString()
@@ -55,23 +41,30 @@ class RegisterPatient : AppCompatActivity() {
             if (name.isEmpty() || surname.isEmpty() || address.isEmpty() || age.isEmpty() || deviceId.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
             } else {
-                // Enviar datos a PatientsView
-                val intent = Intent(this, PatientsView::class.java).apply {
-                    putExtra("name", name)
-                    putExtra("surname", surname)
-                    putExtra("address", address)
-                    putExtra("age", age)
-                    putExtra("condition", condition)
-                    putExtra("deviceId", deviceId)
+                val sharedPref = getSharedPreferences("PatientDataList", MODE_PRIVATE)
+                val jsonString = sharedPref.getString("patients", "[]")
+                val pacientes = JSONArray(jsonString)
+
+                val nuevo = JSONObject().apply {
+                    put("name", name)
+                    put("surname", surname)
+                    put("address", address)
+                    put("age", age)
+                    put("condition", condition)
+                    put("deviceId", deviceId)
                 }
-                startActivity(intent)
-                finish() // Cierra la actividad actual
+
+                pacientes.put(nuevo)
+                sharedPref.edit().putString("patients", pacientes.toString()).apply()
+
+                startActivity(Intent(this, PatientsView::class.java))
+                finish()
             }
         }
 
-        // Botón de regreso
+        // Regresar
         findViewById<ImageView>(R.id.flecha).setOnClickListener {
-            finish() // Regresa a la pantalla anterior
+            finish()
         }
     }
 }

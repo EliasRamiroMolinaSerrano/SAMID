@@ -1,48 +1,64 @@
 package com.example.samid
 
-import android.annotation.SuppressLint
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.app.NotificationManager
+import android.app.NotificationChannel
+import android.app.Notification
+import android.graphics.Color
+import android.media.RingtoneManager
+import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import android.util.Log
 
 class AlarmReceiver : BroadcastReceiver() {
-    @SuppressLint("MissingPermission")
-    override fun onReceive(context: Context?, intent: Intent?) {
-        // Asegúrate de que el contexto no sea nulo
-        context?.let { ctx ->
-            Log.d("AlarmReceiver", "onReceive: Alarma activada") // Log para ver si se activa la alarma
 
-            // Crear el Intent para abrir DestinationActivity
-            val i = Intent(ctx, DestinationActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    override fun onReceive(context: Context, intent: Intent) {
+        val nombre = intent.getStringExtra("nombre") ?: "Paciente"
+        val medicamento = intent.getStringExtra("medicamento") ?: "medicina"
+        val hora = intent.getStringExtra("hora") ?: ""
+
+        Log.d("AlarmReceiver", "✅ Notificación recibida para $nombre a las $hora")
+
+        val canalId = "SamidAlarmChannel"
+        val canalNombre = "Canal de alarmas Samid"
+
+        // Crear canal si es necesario
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                canalId,
+                canalNombre,
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Recordatorios importantes de alarmas médicas"
+                enableLights(true)
+                lightColor = Color.RED
+                enableVibration(true)
             }
 
-            // Crear el PendingIntent
-            val pendingIntent = PendingIntent.getActivity(
-                ctx,
-                0,
-                i,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+
+        // Crear notificación con estilo llamativo
+        val builder = NotificationCompat.Builder(context, canalId)
+            .setSmallIcon(android.R.drawable.ic_dialog_info) // usa tu icono si tienes uno
+            .setContentTitle("⏰ Recordatorio para $nombre")
+            .setContentText("Toma tu medicamento: $medicamento a las $hora")
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText("¡Es hora de tomar tu medicamento!\n\n$nombre, recuerda tomar $medicamento a las $hora.")
             )
+            .setColor(Color.parseColor("#4CAF50")) // verde vibrante
+            .setAutoCancel(true)
+            .setSmallIcon(R.drawable.ic_alarm)
+            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+            .setVibrate(longArrayOf(0, 300, 200, 300))
 
-            // Construir la notificación
-            val builder = NotificationCompat.Builder(ctx, "Samid")
-                .setSmallIcon(R.drawable.ic_launcher_background) // Cambia a un ícono adecuado
-                .setContentTitle("SAMID Alarm Manager")
-                .setContentText("Dar medicamento a Manuel")
-                .setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent)
-
-            // Mostrar la notificación
-            with(NotificationManagerCompat.from(ctx)) {
-                notify(123, builder.build())
-            }
+        with(NotificationManagerCompat.from(context)) {
+            notify(System.currentTimeMillis().toInt(), builder.build())
         }
     }
 }

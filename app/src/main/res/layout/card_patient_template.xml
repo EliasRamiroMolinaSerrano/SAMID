@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="16dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="7dp"
+    app:cardBackgroundColor="@color/Primary_Light">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Columna izquierda: imágenes -->
+        <LinearLayout
+            android:id="@+id/imageColumn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/pulsera"
+                android:contentDescription="Imagen paciente" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/battery_svg"
+                android:contentDescription="Batería"
+                app:tint="@color/Red" />
+        </LinearLayout>
+
+        <!-- Icono eliminar -->
+        <ImageView
+            android:id="@+id/buttonDelete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:src="@drawable/delete_ic"
+            android:contentDescription="Eliminar"
+            app:tint="@color/Red" />
+
+        <!-- Contenido de texto y botones -->
+        <LinearLayout
+            android:id="@+id/infoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageColumn"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true">
+
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre:"
+                android:textSize="18sp"
+                android:textColor="@color/Primary_Dark"
+                android:fontFamily="@font/montserrat_bold" />
+
+            <!-- Condición -->
+            <TextView
+                android:id="@+id/textViewCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Condición:"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                android:textColor="@color/Primary_Dark"
+                android:fontFamily="@font/montserrat_bold" />
+
+            <!-- Botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonCheck"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:text="Checar"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/Primary_Normal"
+                    android:fontFamily="@font/montserrat_bold" />
+
+                <Button
+                    android:id="@+id/buttonDevice"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:textSize="10sp"
+                    android:text="Aparato"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/Primary_Normal"
+                    android:fontFamily="@font/montserrat_bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
