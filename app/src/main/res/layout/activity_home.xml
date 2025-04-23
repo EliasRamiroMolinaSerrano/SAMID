@@ -88,7 +88,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/analisis"
-            android:layout_width="160dp"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
             android:layout_height="150dp"
             app:cardBackgroundColor="#D3E2FB"
             app:cardCornerRadius="16dp"
@@ -132,7 +133,8 @@
         <!-- Tarjeta de dispositivos -->
         <androidx.cardview.widget.CardView
             android:id="@+id/devices"
-            android:layout_width="160dp"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.45"
             android:layout_height="150dp"
             android:layout_marginTop="70dp"
             app:cardBackgroundColor="#F9F8E6"
@@ -170,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         app:menu="@menu/nav_menu"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/black"
